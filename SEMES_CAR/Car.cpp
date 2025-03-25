@@ -48,6 +48,7 @@ interface Car{
 		if (static_cast<int>(this->engine) == 1) return "GM";
 		else if (static_cast<int>(this->engine) == 2) return "TOYOTA";
 		else if (static_cast<int>(this->engine) == 3) return "WIA";
+		return "";
 	}
 
 	std::string getBreak() {
@@ -67,6 +68,16 @@ interface Car{
 			throw different_brand_error("BOSCH 제동장치는 BOSCH 조향장치와 호환됩니다.");
 		}
 	}
+
+	void run() {
+		if (this->engine == Engine::GM || this->engine == Engine::TOYOTA || this->engine == Engine::WIA) {
+			std::cout << "자동차가 동작됩니다.\n";
+		}
+		else {
+			std::cout << "엔진이 고장났습니다.\n";
+		}
+	}
+
 	virtual void test() = 0;
 };
 
@@ -214,9 +225,9 @@ public:
 		return input();
 	}
 
-	void info(std::unique_ptr<Car> car) {
+	void info(Car& car) {
 		printf(CLEAR_SCREEN);
-		if (dynamic_cast<Sedan*>(car.get())) {
+		if (auto sedan = dynamic_cast<const Sedan*>(&car)) {
 			printf("        _________\n");
 			printf("       /|        |\n");
 			printf("  ____/_|________|______\n");
@@ -226,7 +237,7 @@ public:
 			printf("제조된 자동차 정보\n");
 			printf("차량 타입 : Sedan\n");
 		}
-		else if (dynamic_cast<SUV*>(car.get())) {
+		else if (auto suv = dynamic_cast<const SUV*>(&car)) {
 			printf("        _______________\n");
 			printf("       /|              |\n");
 			printf("  ____/_|______________|_____\n");
@@ -236,7 +247,7 @@ public:
 			printf("제조된 자동차 정보\n");
 			printf("차량 타입 : Suv\n");
 		}
-		else if (dynamic_cast<Truck*>(car.get())) {
+		else if (auto truck = dynamic_cast<const Truck*>(&car)) {
 			printf("     _________\n");
 			printf("   /|         |\n");
 			printf("  /_|_________|__________________\n");
@@ -246,9 +257,9 @@ public:
 			printf("제조된 자동차 정보\n");
 			printf("차량 타입 : Truck\n");
 		}
-		std::cout << "엔     진 : " << car->getEngine() << "\n";
-		std::cout << "제동 장치 : " << car->getBreak() << "\n";
-		std::cout << "조향 장치 : " << car->getSteering() << "\n";
+		std::cout << "엔     진 : " << car.getEngine() << "\n";
+		std::cout << "제동 장치 : " << car.getBreak() << "\n";
+		std::cout << "조향 장치 : " << car.getSteering() << "\n";
 		printf("===============================\n");
 		printf("정보 닫기 ");
 	}
@@ -282,7 +293,9 @@ int main() {
 		}
 		else if (console.get_step() == 5) {
 			int action = console.choose_action();
-			
+			if (action == 1) car->run();
+			else if (action == 2) console.info(*car);
+			else if (action == 3) car->test();
 		}
 	}
 }
