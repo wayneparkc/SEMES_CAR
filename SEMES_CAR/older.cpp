@@ -1,5 +1,4 @@
-/*
-* #include <stdio.h>
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -12,6 +11,7 @@ void selectEngine(int answer);
 void selectBreakSystem(int answer);
 void selectSteeringSystem(int answer);
 void runProducedCar();
+void infoProducedCar();
 void testProducedCar();
 void delay(int ms);
 
@@ -57,12 +57,18 @@ void delay(int ms) {
 	}
 }
 
+void next() {
+	char buf[100];
+	printf("(Enter)");
+	fgets(buf, sizeof(buf), stdin);
+}
+
 int main() {
 	char buf[100];
 	int step = CarType_Q;
 
 	while (1) {
-		
+
 		if (step == CarType_Q) {
 			printf(CLEAR_SCREEN);
 
@@ -77,6 +83,7 @@ int main() {
 			printf("1. Sedan\n");
 			printf("2. SUV\n");
 			printf("3. Truck\n");
+			printf("4. 종료\n");
 		}
 		else if (step == Engine_Q) {
 			printf(CLEAR_SCREEN);
@@ -108,7 +115,8 @@ int main() {
 			printf("어떤 동작을 할까요?\n");
 			printf("0. 처음 화면으로 돌아가기\n");
 			printf("1. RUN\n");
-			printf("2. Test\n");
+			printf("2. Info\n");
+			printf("3. Test\n");
 		}
 		printf("===============================\n");
 
@@ -116,11 +124,12 @@ int main() {
 		fgets(buf, sizeof(buf), stdin);
 
 		//엔터 개행문자 제거
-		strtok(buf, "\r");
-		strtok(buf, "\n");
+		char* c = NULL;
+		char* ch = strtok_s(buf, "\r", &c);
+		ch = strtok_s(buf, "\n", &c);
 
 
-		if (!strcmp(buf, "exit")) {
+		if (!strcmp(buf, "4")) {
 			printf("바이바이\n");
 			break;
 		}
@@ -131,38 +140,38 @@ int main() {
 
 		//입력받은 문자가 숫자가 아니라면
 		if (*checkNumber != '\0') {
-			printf("ERROR :: 숫자만 입력 가능\n");
-			delay(800);
+			printf("ERROR :: 숫자만 입력 가능");
+			next();
 			continue;
 		}
 
 		if (step == CarType_Q && !(answer >= 1 && answer <= 3)) {
-			printf("ERROR :: 차량 타입은 1 ~ 3 범위만 선택 가능\n");
-			delay(800);
+			printf("ERROR :: 차량 타입은 1 ~ 3 범위만 선택 가능 ");
+			next();
 			continue;
 		}
 
 		if (step == Engine_Q && !(answer >= 0 && answer <= 4)) {
-			printf("ERROR :: 엔진은 1 ~ 4 범위만 선택 가능\n");
-			delay(800);
+			printf("ERROR :: 엔진은 1 ~ 4 범위만 선택 가능");
+			next();
 			continue;
 		}
 
 		if (step == BreakSystem_Q && !(answer >= 0 && answer <= 3)) {
-			printf("ERROR :: 제동장치는 1 ~ 3 범위만 선택 가능\n");
-			delay(800);
+			printf("ERROR :: 제동장치는 1 ~ 3 범위만 선택 가능");
+			next();
 			continue;
 		}
 
 		if (step == SteeringSystem_Q && !(answer >= 0 && answer <= 2)) {
-			printf("ERROR :: 조향장치는 1 ~ 2 범위만 선택 가능\n");
-			delay(800);
+			printf("ERROR :: 조향장치는 1 ~ 2 범위만 선택 가능");
+			next();
 			continue;
 		}
 
-		if (step == Run_Test && !(answer >= 0 && answer <= 2)) {
-			printf("ERROR :: Run 또는 Test 중 하나를 선택 필요\n");
-			delay(800);
+		if (step == Run_Test && !(answer >= 0 && answer <= 3)) {
+			printf("ERROR :: Run 또는 Test 중 하나를 선택 필요");
+			next();
 			continue;
 		}
 
@@ -180,31 +189,35 @@ int main() {
 
 		if (step == CarType_Q) {
 			selectCarType(answer);
-			delay(800);
+			delay(1500);
 			step = Engine_Q;
 		}
 		else if (step == Engine_Q) {
 			selectEngine(answer);
-			delay(800);
+			delay(1500);
 			step = BreakSystem_Q;
 		}
 		else if (step == BreakSystem_Q) {
 			selectBreakSystem(answer);
-			delay(800);
+			delay(1500);
 			step = SteeringSystem_Q;
 		}
 		else if (step == SteeringSystem_Q) {
 			selectSteeringSystem(answer);
-			delay(800);
+			delay(1500);
 			step = Run_Test;
 		}
 		else if (step == Run_Test && answer == 1) {
 			runProducedCar();
-			delay(800);
+			next();
 		}
 		else if (step == Run_Test && answer == 2) {
+			infoProducedCar();
+			next();
+		}
+		else if (step == Run_Test && answer == 3) {
 			testProducedCar();
-			delay(800);
+			next();
 		}
 	}
 
@@ -240,42 +253,79 @@ void selectSteeringSystem(int answer) {
 void runProducedCar() {
 	if (stack[Engine_Q] == 4) {
 		printf("엔진이 고장났습니다.\n");
-		printf("자동차가 움직이지 않습니다.\n");
+		printf("자동차가 움직이지 않습니다. ");
 	}
 	else {
-		printf("자동차가 동작됩니다.\n");
+		printf("자동차가 동작됩니다. ");
 	}
 }
 
 void testProducedCar() {
 	if (stack[CarType_Q] == SEDAN && stack[BreakSystem_Q] == CONTINENTAL) {
 		printf("자동차 테스트 결과 : FAIL\n");
-		printf("Sedan은 Continental 제동장치를 쓸 수 없습니다\n");
+		printf("Sedan은 Continental 제동장치를 쓸 수 없습니다 ");
 	}
 	else if (stack[CarType_Q] == SUV && stack[Engine_Q] == TOYOTA) {
 		printf("자동차 테스트 결과 : FAIL\n");
-		printf("SUV는 도요타 엔진을 쓸 수 없습니다.\n");
+		printf("SUV는 도요타 엔진을 쓸 수 없습니다. ");
 	}
 	else if (stack[CarType_Q] == TRUCK && stack[Engine_Q] == WIA) {
 		printf("자동차 테스트 결과 : FAIL\n");
-		printf("Truck은 WIA 엔진을 쓸 수 없습니다.\n");
+		printf("Truck은 WIA 엔진을 쓸 수 없습니다. ");
 	}
 	else if (stack[CarType_Q] == TRUCK && stack[BreakSystem_Q] == MANDO) {
 		printf("자동차 테스트 결과 : FAIL\n");
-		printf("Truck은 MANDO 제동장치를 쓸 수 없습니다.\n");
+		printf("Truck은 MANDO 제동장치를 쓸 수 없습니다. ");
 	}
 	else if (stack[BreakSystem_Q] == BOSCH_B && stack[SteeringSystem_Q] != BOSCH_S) {
 		printf("자동차 테스트 결과 : FAIL\n");
-		printf("제동장치에 Bosch 제품을 썼다면, 조향장치도 Bosch 제품을 써야합니다.\n");
+		printf("제동장치에 Bosch 제품을 썼다면, 조향장치도 Bosch 제품을 써야합니다. ");
 	}
 	else if (stack[BreakSystem_Q] != BOSCH_B && stack[SteeringSystem_Q] == BOSCH_S) {
 		printf("자동차 테스트 결과 : FAIL\n");
-		printf("조향장치에 Bosch 제품을 썼다면, 제동장치도 Bosch 제품을 써야합니다.\n");
+		printf("조향장치에 Bosch 제품을 썼다면, 제동장치도 Bosch 제품을 써야합니다. ");
 	}
 	else {
-		printf("자동차 테스트 결과 : PASS\n");
+		printf("자동차 테스트 결과 : PASS ");
 	}
 
 }
-*/
 
+void infoProducedCar() {
+	printf(CLEAR_SCREEN);
+	char car[] = "truck";
+	if (strcmp(car, "sedan") == 0) {
+		printf("        _________\n");
+		printf("       /|        |\n");
+		printf("  ____/_|________|______\n");
+		printf(" |                    o |\n");
+		printf(" '-(@)------------(@)--'\n");
+	}
+	else if (strcmp(car, "suv") == 0) {
+		printf("        _______________\n");
+		printf("       /|              |\n");
+		printf("  ____/_|______________|_____\n");
+		printf(" |                        o  |\n");
+		printf(" '-(@)------------------(@)--'\n");
+	}
+	else if (strcmp(car, "truck") == 0) {
+		printf("     _________\n");
+		printf("   /|         |\n");
+		printf("  /_|_________|__________________\n");
+		printf(" |                            o  |\n");
+		printf(" '-(@)----------------------(@)--'\n");
+
+	}
+	printf("===============================\n");
+	printf("제조된 자동차 정보\n");
+	printf("차량 타입 : ");
+	printf("\n");
+	printf("엔     진 : ");
+	printf("\n");
+	printf("제동 장치 : ");
+	printf("\n");
+	printf("조향 장치 : ");
+	printf("\n");
+	printf("===============================\n");
+	printf("정보 닫기 ");
+}
