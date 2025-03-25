@@ -52,7 +52,7 @@ int main() {
 			printf(" |                      O  |\n");
 			printf(" '-(@)----------------(@)--'\n");
 			printf("===============================\n");
-			printf("ì–´ë–¤ ì°¨ëŸ‰ íƒ€ì…ì„ ì„ íƒí• ê¹Œìš”?\n");
+			printf("?´ë–¤ ì°¨ëŸ‰ ?€?…ì„ ? íƒ? ê¹Œ??\n");
 			printf("1. Sedan\n");
 			printf("2. SUV\n");
 			printf("3. Truck\n");
@@ -61,33 +61,33 @@ int main() {
 		}
 		else if (step == 2) {
 			printf(CLEAR_SCREEN);
-			printf("ì–´ë–¤ ì—”ì§„ì„ íƒ‘ì¬í• ê¹Œìš”?\n");
-			printf("0. ë’¤ë¡œê°€ê¸°\n");
+			printf("?´ë–¤ ?”ì§„???‘ì¬? ê¹Œ??\n");
+			printf("0. ?¤ë¡œê°€ê¸?n");
 			printf("1. GM\n");
 			printf("2. TOYOTA\n");
 			printf("3. WIA\n");
-			printf("4. ê³ ì¥ë‚œ ì—”ì§„\n");
+			printf("4. ê³ ì¥???”ì§„\n");
 		}
 		else if (step == 3) {
 			printf(CLEAR_SCREEN);
-			printf("ì–´ë–¤ ì œë™ì¥ì¹˜ë¥¼ ì„ íƒí• ê¹Œìš”?\n");
-			printf("0. ë’¤ë¡œê°€ê¸°\n");
+			printf("?´ë–¤ ?œë™?¥ì¹˜ë¥?? íƒ? ê¹Œ??\n");
+			printf("0. ?¤ë¡œê°€ê¸?n");
 			printf("1. MANDO\n");
 			printf("2. CONTINENTAL\n");
 			printf("3. BOSCH\n");
 		}
 		else if (step == 4) {
 			printf(CLEAR_SCREEN);
-			printf("ì–´ë–¤ ì¡°í–¥ì¥ì¹˜ë¥¼ ì„ íƒí• ê¹Œìš”?\n");
-			printf("0. ë’¤ë¡œê°€ê¸°\n");
+			printf("?´ë–¤ ì¡°í–¥?¥ì¹˜ë¥?? íƒ? ê¹Œ??\n");
+			printf("0. ?¤ë¡œê°€ê¸?n");
 			printf("1. BOSCH\n");
 			printf("2. MOBIS\n");
 		}
 		else if (step == 5) {
 			printf(CLEAR_SCREEN);
-			printf("ë©‹ì§„ ì°¨ëŸ‰ì´ ì™„ì„±ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
-			printf("ì–´ë–¤ ë™ì‘ì„ í• ê¹Œìš”?\n");
-			printf("0. ì²˜ìŒ í™”ë©´ìœ¼ë¡œ ëŒì•„ê°€ê¸°\n");
+			printf("ë©‹ì§„ ì°¨ëŸ‰???„ì„±?˜ì—ˆ?µë‹ˆ??\n");
+			printf("?´ë–¤ ?™ì‘??? ê¹Œ??\n");
+			printf("0. ì²˜ìŒ ?”ë©´?¼ë¡œ ?Œì•„ê°€ê¸?n");
 			printf("1. RUN\n");
 			printf("2. Info\n");
 			printf("3. Test\n");
@@ -97,7 +97,7 @@ int main() {
 		printf("INPUT > ");
 		fgets(buf, sizeof(buf), stdin);
 
-		//ì—”í„° ê°œí–‰ë¬¸ì ì œê±°
+		//?”í„° ê°œí–‰ë¬¸ì ?œê±°
 		char* c = NULL;
 		char* ch = strtok_s(buf, "\r", &c);
 		ch = strtok_s(buf, "\n", &c);
@@ -108,54 +108,78 @@ int main() {
 			break;
 		}
 
-		//ìˆ«ìë¡œ ëœ ëŒ€ë‹µì¸ì§€ í™•ì¸
+		//?«ìë¡????€?µì¸ì§€ ?•ì¸
 		char* checkNumber;
-		int answer = strtol(buf, &checkNumber, 10); //ë¬¸ìì—´ì„ 10ì§„ìˆ˜ë¡œ ë³€í™˜
+		int answer = strtol(buf, &checkNumber, 10); //ë¬¸ì?´ì„ 10ì§„ìˆ˜ë¡?ë³€??
 
-		//ì…ë ¥ë°›ì€ ë¬¸ìê°€ ìˆ«ìê°€ ì•„ë‹ˆë¼ë©´
+		//?…ë ¥ë°›ì? ë¬¸ìê°€ ?«ìê°€ ?„ë‹ˆ?¼ë©´
 		if (*checkNumber != '\0') {
-			printf("ERROR :: ìˆ«ìë§Œ ì…ë ¥ ê°€ëŠ¥");
+			printf("ERROR :: ?«ìë§??…ë ¥ ê°€??);
 			next();
 			continue;
 		}
 
 		if (step == 1 && !(answer >= 1 && answer <= 3)) {
-			printf("ERROR :: ì°¨ëŸ‰ íƒ€ì…ì€ 1 ~ 3 ë²”ìœ„ë§Œ ì„ íƒ ê°€ëŠ¥ ");
+<<<<<<< HEAD
+			printf("ERROR :: ì°¨ëŸ‰ ?€?…ì? 1 ~ 3 ë²”ìœ„ë§?? íƒ ê°€??");
+=======
+			printf("ERROR :: Â÷·® Å¸ÀÔÀº 1 ~ 3 ¹üÀ§¸¸ ¼±ÅÃ °¡´É ");
+>>>>>>> a018d5c299019ceaebc7f3b841d3083587a1a32a
 			next();
 			continue;
 		}
 
 		if (step == 2 && !(answer >= 0 && answer <= 4)) {
-			printf("ERROR :: ì—”ì§„ì€ 1 ~ 4 ë²”ìœ„ë§Œ ì„ íƒ ê°€ëŠ¥");
+<<<<<<< HEAD
+			printf("ERROR :: ?”ì§„?€ 1 ~ 4 ë²”ìœ„ë§?? íƒ ê°€??);
+=======
+			printf("ERROR :: ¿£ÁøÀº 1 ~ 4 ¹üÀ§¸¸ ¼±ÅÃ °¡´É");
+>>>>>>> a018d5c299019ceaebc7f3b841d3083587a1a32a
 			next();
 			continue;
 		}
 
 		if (step == 3 && !(answer >= 0 && answer <= 3)) {
-			printf("ERROR :: ì œë™ì¥ì¹˜ëŠ” 1 ~ 3 ë²”ìœ„ë§Œ ì„ íƒ ê°€ëŠ¥");
+<<<<<<< HEAD
+			printf("ERROR :: ?œë™?¥ì¹˜??1 ~ 3 ë²”ìœ„ë§?? íƒ ê°€??);
+=======
+			printf("ERROR :: Á¦µ¿ÀåÄ¡´Â 1 ~ 3 ¹üÀ§¸¸ ¼±ÅÃ °¡´É");
+>>>>>>> a018d5c299019ceaebc7f3b841d3083587a1a32a
 			next();
 			continue;
 		}
 
 		if (step == 4 && !(answer >= 0 && answer <= 2)) {
-			printf("ERROR :: ì¡°í–¥ì¥ì¹˜ëŠ” 1 ~ 2 ë²”ìœ„ë§Œ ì„ íƒ ê°€ëŠ¥");
+<<<<<<< HEAD
+			printf("ERROR :: ì¡°í–¥?¥ì¹˜??1 ~ 2 ë²”ìœ„ë§?? íƒ ê°€??);
+=======
+			printf("ERROR :: Á¶ÇâÀåÄ¡´Â 1 ~ 2 ¹üÀ§¸¸ ¼±ÅÃ °¡´É");
+>>>>>>> a018d5c299019ceaebc7f3b841d3083587a1a32a
 			next();
 			continue;
 		}
 
 		if (step == 5 && !(answer >= 0 && answer <= 3)) {
-			printf("ERROR :: Run ë˜ëŠ” Test ì¤‘ í•˜ë‚˜ë¥¼ ì„ íƒ í•„ìš”");
+<<<<<<< HEAD
+			printf("ERROR :: Run ?ëŠ” Test ì¤??˜ë‚˜ë¥?? íƒ ?„ìš”");
+=======
+			printf("ERROR :: Run ¶Ç´Â Test Áß ÇÏ³ª¸¦ ¼±ÅÃ ÇÊ¿ä");
+>>>>>>> a018d5c299019ceaebc7f3b841d3083587a1a32a
 			next();
 			continue;
 		}
 
-		//ì²˜ìŒìœ¼ë¡œ ëŒì•„ê°€ê¸°
+<<<<<<< HEAD
+		//ì²˜ìŒ?¼ë¡œ ?Œì•„ê°€ê¸?
+=======
+		//Ã³À½À¸·Î µ¹¾Æ°¡±â
+>>>>>>> a018d5c299019ceaebc7f3b841d3083587a1a32a
 		if (answer == 0 && step == 5) {
 			step = 1;
 			continue;
 		}
 
-		//ì´ì „ìœ¼ë¡œ ëŒì•„ê°€ê¸°
+		//?´ì „?¼ë¡œ ?Œì•„ê°€ê¸?
 		if (answer == 0 && step >= 1) {
 			step -= 1;
 			continue;
@@ -199,72 +223,106 @@ int main() {
 
 void selectCarType(int answer) {
 	stack[1] = answer;
-	if (answer == 1) printf("ì°¨ëŸ‰ íƒ€ì…ìœ¼ë¡œ ì„¸ë‹¨ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
-	if (answer == 2) printf("ì°¨ëŸ‰ íƒ€ì…ìœ¼ë¡œ SUVì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
-	if (answer == 3) printf("ì°¨ëŸ‰ íƒ€ì…ìœ¼ë¡œ TRUCKì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
+<<<<<<< HEAD
+	if (answer == 1) printf("ì°¨ëŸ‰ ?€?…ìœ¼ë¡??¸ë‹¨??? íƒ?˜ì…¨?µë‹ˆ??\n");
+	if (answer == 2) printf("ì°¨ëŸ‰ ?€?…ìœ¼ë¡?SUV??? íƒ?˜ì…¨?µë‹ˆ??\n");
+	if (answer == 3) printf("ì°¨ëŸ‰ ?€?…ìœ¼ë¡?TRUCK??? íƒ?˜ì…¨?µë‹ˆ??\n");
+=======
+	if (answer == 1) printf("Â÷·® Å¸ÀÔÀ¸·Î ¼¼´ÜÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n");
+	if (answer == 2) printf("Â÷·® Å¸ÀÔÀ¸·Î SUVÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n");
+	if (answer == 3) printf("Â÷·® Å¸ÀÔÀ¸·Î TRUCKÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n");
+>>>>>>> a018d5c299019ceaebc7f3b841d3083587a1a32a
 }
 
 void selectEngine(int answer) {
 	stack[2] = answer;
-	if (answer == 1) printf("GM ì—”ì§„ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
-	if (answer == 2) printf("TOYOTA ì—”ì§„ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
-	if (answer == 3) printf("WIA ì—”ì§„ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
+<<<<<<< HEAD
+	if (answer == 1) printf("GM ?”ì§„??? íƒ?˜ì…¨?µë‹ˆ??\n");
+	if (answer == 2) printf("TOYOTA ?”ì§„??? íƒ?˜ì…¨?µë‹ˆ??\n");
+	if (answer == 3) printf("WIA ?”ì§„??? íƒ?˜ì…¨?µë‹ˆ??\n");
+=======
+	if (answer == 1) printf("GM ¿£ÁøÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n");
+	if (answer == 2) printf("TOYOTA ¿£ÁøÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n");
+	if (answer == 3) printf("WIA ¿£ÁøÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n");
+>>>>>>> a018d5c299019ceaebc7f3b841d3083587a1a32a
 }
 
 void selectBreakSystem(int answer) {
 	stack[3] = answer;
-	if (answer == 1) printf("MANDO ì œë™ì¥ì¹˜ë¥¼ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
-	if (answer == 2) printf("CONTINENTAL ì œë™ì¥ì¹˜ë¥¼ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
-	if (answer == 3) printf("BOSCH ì œë™ì¥ì¹˜ë¥¼ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
+<<<<<<< HEAD
+	if (answer == 1) printf("MANDO ?œë™?¥ì¹˜ë¥?? íƒ?˜ì…¨?µë‹ˆ??\n");
+	if (answer == 2) printf("CONTINENTAL ?œë™?¥ì¹˜ë¥?? íƒ?˜ì…¨?µë‹ˆ??\n");
+	if (answer == 3) printf("BOSCH ?œë™?¥ì¹˜ë¥?? íƒ?˜ì…¨?µë‹ˆ??\n");
+=======
+	if (answer == 1) printf("MANDO Á¦µ¿ÀåÄ¡¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n");
+	if (answer == 2) printf("CONTINENTAL Á¦µ¿ÀåÄ¡¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n");
+	if (answer == 3) printf("BOSCH Á¦µ¿ÀåÄ¡¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n");
+>>>>>>> a018d5c299019ceaebc7f3b841d3083587a1a32a
 }
 
 void selectSteeringSystem(int answer) {
 	stack[4] = answer;
-	if (answer == 1) printf("BOSCH ì œë™ì¥ì¹˜ë¥¼ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
-	if (answer == 2) printf("MOBIS ì œë™ì¥ì¹˜ë¥¼ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\n");
+<<<<<<< HEAD
+	if (answer == 1) printf("BOSCH ?œë™?¥ì¹˜ë¥?? íƒ?˜ì…¨?µë‹ˆ??\n");
+	if (answer == 2) printf("MOBIS ?œë™?¥ì¹˜ë¥?? íƒ?˜ì…¨?µë‹ˆ??\n");
+=======
+	if (answer == 1) printf("BOSCH Á¦µ¿ÀåÄ¡¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n");
+	if (answer == 2) printf("MOBIS Á¦µ¿ÀåÄ¡¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n");
+>>>>>>> a018d5c299019ceaebc7f3b841d3083587a1a32a
 }
 
 void runProducedCar() {
 	if (stack[2] == 4) {
-		printf("ì—”ì§„ì´ ê³ ì¥ë‚¬ìŠµë‹ˆë‹¤.\n");
-		printf("ìë™ì°¨ê°€ ì›€ì§ì´ì§€ ì•ŠìŠµë‹ˆë‹¤. ");
+<<<<<<< HEAD
+		printf("?”ì§„??ê³ ì¥?¬ìŠµ?ˆë‹¤.\n");
+		printf("?ë™ì°¨ê? ?€ì§ì´ì§€ ?ŠìŠµ?ˆë‹¤. ");
+=======
+		printf("¿£ÁøÀÌ °íÀå³µ½À´Ï´Ù.\n");
+		printf("ÀÚµ¿Â÷°¡ ¿òÁ÷ÀÌÁö ¾Ê½À´Ï´Ù. ");
+>>>>>>> a018d5c299019ceaebc7f3b841d3083587a1a32a
 	}
 	else {
-		printf("ìë™ì°¨ê°€ ë™ì‘ë©ë‹ˆë‹¤. ");
+		printf("?ë™ì°¨ê? ?™ì‘?©ë‹ˆ?? ");
 	}
 }
 
 /*
 void testProducedCar() {
 	if (stack[1] == static_cast<int>(CarType::SEDAN) && stack[3] == static_cast<int>(CarType::CONTINENTAL)) {
-		printf("ìë™ì°¨ í…ŒìŠ¤íŠ¸ ê²°ê³¼ : FAIL\n");
-		printf("Sedanì€ Continental ì œë™ì¥ì¹˜ë¥¼ ì“¸ ìˆ˜ ì—†ìŠµë‹ˆë‹¤ ");
+<<<<<<< HEAD
+		printf("?ë™ì°??ŒìŠ¤??ê²°ê³¼ : FAIL\n");
+		printf("Sedan?€ Continental ?œë™?¥ì¹˜ë¥??????†ìŠµ?ˆë‹¤ ");
+=======
+		printf("ÀÚµ¿Â÷ Å×½ºÆ® °á°ú : FAIL\n");
+		printf("SedanÀº Continental Á¦µ¿ÀåÄ¡¸¦ ¾µ ¼ö ¾ø½À´Ï´Ù ");
+>>>>>>> a018d5c299019ceaebc7f3b841d3083587a1a32a
 	}
 	else if (stack[CarType_Q] == SUV && stack[Engine_Q] == TOYOTA) {
-		printf("ìë™ì°¨ í…ŒìŠ¤íŠ¸ ê²°ê³¼ : FAIL\n");
-		printf("SUVëŠ” ë„ìš”íƒ€ ì—”ì§„ì„ ì“¸ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ");
+		printf("?ë™ì°??ŒìŠ¤??ê²°ê³¼ : FAIL\n");
+		printf("SUV???„ìš”?€ ?”ì§„???????†ìŠµ?ˆë‹¤. ");
 	}
 	else if (stack[CarType_Q] == TRUCK && stack[Engine_Q] == WIA) {
-		printf("ìë™ì°¨ í…ŒìŠ¤íŠ¸ ê²°ê³¼ : FAIL\n");
-		printf("Truckì€ WIA ì—”ì§„ì„ ì“¸ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ");
+		printf("?ë™ì°??ŒìŠ¤??ê²°ê³¼ : FAIL\n");
+		printf("Truck?€ WIA ?”ì§„???????†ìŠµ?ˆë‹¤. ");
 	}
 	else if (stack[CarType_Q] == TRUCK && stack[BreakSystem_Q] == MANDO) {
-		printf("ìë™ì°¨ í…ŒìŠ¤íŠ¸ ê²°ê³¼ : FAIL\n");
-		printf("Truckì€ MANDO ì œë™ì¥ì¹˜ë¥¼ ì“¸ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ");
+		printf("?ë™ì°??ŒìŠ¤??ê²°ê³¼ : FAIL\n");
+		printf("Truck?€ MANDO ?œë™?¥ì¹˜ë¥??????†ìŠµ?ˆë‹¤. ");
 	}
 	else if (stack[BreakSystem_Q] == BOSCH_B && stack[SteeringSystem_Q] != BOSCH_S) {
-		printf("ìë™ì°¨ í…ŒìŠ¤íŠ¸ ê²°ê³¼ : FAIL\n");
-		printf("ì œë™ì¥ì¹˜ì— Bosch ì œí’ˆì„ ì¼ë‹¤ë©´, ì¡°í–¥ì¥ì¹˜ë„ Bosch ì œí’ˆì„ ì¨ì•¼í•©ë‹ˆë‹¤. ");
+		printf("?ë™ì°??ŒìŠ¤??ê²°ê³¼ : FAIL\n");
+		printf("?œë™?¥ì¹˜??Bosch ?œí’ˆ???¼ë‹¤ë©? ì¡°í–¥?¥ì¹˜??Bosch ?œí’ˆ???¨ì•¼?©ë‹ˆ?? ");
 	}
 	else if (stack[BreakSystem_Q] != BOSCH_B && stack[SteeringSystem_Q] == BOSCH_S) {
-		printf("ìë™ì°¨ í…ŒìŠ¤íŠ¸ ê²°ê³¼ : FAIL\n");
-		printf("ì¡°í–¥ì¥ì¹˜ì— Bosch ì œí’ˆì„ ì¼ë‹¤ë©´, ì œë™ì¥ì¹˜ë„ Bosch ì œí’ˆì„ ì¨ì•¼í•©ë‹ˆë‹¤. ");
+		printf("?ë™ì°??ŒìŠ¤??ê²°ê³¼ : FAIL\n");
+		printf("ì¡°í–¥?¥ì¹˜??Bosch ?œí’ˆ???¼ë‹¤ë©? ?œë™?¥ì¹˜??Bosch ?œí’ˆ???¨ì•¼?©ë‹ˆ?? ");
 	}
 	else {
-		printf("ìë™ì°¨ í…ŒìŠ¤íŠ¸ ê²°ê³¼ : PASS ");
+		printf("?ë™ì°??ŒìŠ¤??ê²°ê³¼ : PASS ");
 	}
 
 }
+*/
 
 
 void infoProducedCar() {
@@ -293,16 +351,16 @@ void infoProducedCar() {
 
 	}
 	printf("===============================\n");
-	printf("ì œì¡°ëœ ìë™ì°¨ ì •ë³´\n");
-	printf("ì°¨ëŸ‰ íƒ€ì… : ");
+	printf("?œì¡°???ë™ì°??•ë³´\n");
+	printf("ì°¨ëŸ‰ ?€??: ");
 	printf("\n");
-	printf("ì—”     ì§„ : ");
+	printf("??    ì§?: ");
 	printf("\n");
-	printf("ì œë™ ì¥ì¹˜ : ");
+	printf("?œë™ ?¥ì¹˜ : ");
 	printf("\n");
-	printf("ì¡°í–¥ ì¥ì¹˜ : ");
+	printf("ì¡°í–¥ ?¥ì¹˜ : ");
 	printf("\n");
 	printf("===============================\n");
-	printf("ì •ë³´ ë‹«ê¸° ");
+	printf("?•ë³´ ?«ê¸° ");
 }
 */

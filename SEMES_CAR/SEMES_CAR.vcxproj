@@ -134,7 +134,6 @@
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="older.cpp" />
     <ClCompile Include="Sedan.cpp" />
     <ClCompile Include="Sedan.h" />
     <ClCompile Include="SUV.cpp" />

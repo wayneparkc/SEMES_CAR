@@ -29,7 +29,6 @@ int main() {
 			int action = console.choose_action();
 			if (action == 1) car->run();
 			else if (action == 2) car->info();
-
 			else if (action == 3) car->test();
 		}
 		console.set_step(console.get_step());

@@ -3,11 +3,11 @@
 #include <map>
 #include <stdexcept>
 enum class QuestionType : uint8_t {
-    CarType_Q,
-    Engine_Q,
-    BreakSystem_Q,
-    SteeringSystem_Q,
-    Run_Test,
+    CarType_Q = 1,
+    Engine_Q = 2,
+    BreakSystem_Q = 3,
+    SteeringSystem_Q = 4,
+    Run_Test = 5
 };
 
 enum class CarType : uint8_t {
