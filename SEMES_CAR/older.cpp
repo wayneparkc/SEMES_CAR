@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "part.h"
 
 #define CLEAR_SCREEN "\033[H\033[2J"
 
@@ -14,37 +15,6 @@ void runProducedCar();
 void infoProducedCar();
 void testProducedCar();
 void delay(int ms);
-
-enum QuesionType {
-	CarType_Q,
-	Engine_Q,
-	BreakSystem_Q,
-	SteeringSystem_Q,
-	Run_Test,
-};
-
-enum CarType {
-	SEDAN = 1,
-	SUV,
-	TRUCK
-};
-
-enum Engine {
-	GM = 1,
-	TOYOTA,
-	WIA
-};
-
-enum BreakSystem {
-	MANDO = 1,
-	CONTINENTAL,
-	BOSCH_B
-};
-
-enum SteeringSystem {
-	BOSCH_S = 1,
-	MOBIS
-};
 
 void delay(int ms) {
 	volatile int sum = 0;
@@ -65,11 +35,11 @@ void next() {
 
 int main() {
 	char buf[100];
-	int step = CarType_Q;
+	int step = static_cast<int>(QuestionType::CarType_Q);
 
 	while (1) {
 
-		if (step == CarType_Q) {
+		if (step == 1) {
 			printf(CLEAR_SCREEN);
 
 
@@ -85,7 +55,7 @@ int main() {
 			printf("3. Truck\n");
 			printf("4. 종료\n");
 		}
-		else if (step == Engine_Q) {
+		else if (step == 2) {
 			printf(CLEAR_SCREEN);
 			printf("어떤 엔진을 탑재할까요?\n");
 			printf("0. 뒤로가기\n");
@@ -94,7 +64,7 @@ int main() {
 			printf("3. WIA\n");
 			printf("4. 고장난 엔진\n");
 		}
-		else if (step == BreakSystem_Q) {
+		else if (step == 3) {
 			printf(CLEAR_SCREEN);
 			printf("어떤 제동장치를 선택할까요?\n");
 			printf("0. 뒤로가기\n");
@@ -102,14 +72,14 @@ int main() {
 			printf("2. CONTINENTAL\n");
 			printf("3. BOSCH\n");
 		}
-		else if (step == SteeringSystem_Q) {
+		else if (step == 4) {
 			printf(CLEAR_SCREEN);
 			printf("어떤 조향장치를 선택할까요?\n");
 			printf("0. 뒤로가기\n");
 			printf("1. BOSCH\n");
 			printf("2. MOBIS\n");
 		}
-		else if (step == Run_Test) {
+		else if (step == 5) {
 			printf(CLEAR_SCREEN);
 			printf("멋진 차량이 완성되었습니다.\n");
 			printf("어떤 동작을 할까요?\n");
@@ -145,39 +115,39 @@ int main() {
 			continue;
 		}
 
-		if (step == CarType_Q && !(answer >= 1 && answer <= 3)) {
+		if (step == 1 && !(answer >= 1 && answer <= 3)) {
 			printf("ERROR :: 차량 타입은 1 ~ 3 범위만 선택 가능 ");
 			next();
 			continue;
 		}
 
-		if (step == Engine_Q && !(answer >= 0 && answer <= 4)) {
+		if (step == 2 && !(answer >= 0 && answer <= 4)) {
 			printf("ERROR :: 엔진은 1 ~ 4 범위만 선택 가능");
 			next();
 			continue;
 		}
 
-		if (step == BreakSystem_Q && !(answer >= 0 && answer <= 3)) {
+		if (step == 3 && !(answer >= 0 && answer <= 3)) {
 			printf("ERROR :: 제동장치는 1 ~ 3 범위만 선택 가능");
 			next();
 			continue;
 		}
 
-		if (step == SteeringSystem_Q && !(answer >= 0 && answer <= 2)) {
+		if (step == 4 && !(answer >= 0 && answer <= 2)) {
 			printf("ERROR :: 조향장치는 1 ~ 2 범위만 선택 가능");
 			next();
 			continue;
 		}
 
-		if (step == Run_Test && !(answer >= 0 && answer <= 3)) {
+		if (step == 5 && !(answer >= 0 && answer <= 3)) {
 			printf("ERROR :: Run 또는 Test 중 하나를 선택 필요");
 			next();
 			continue;
 		}
 
 		//처음으로 돌아가기
-		if (answer == 0 && step == Run_Test) {
-			step = CarType_Q;
+		if (answer == 0 && step == 5) {
+			step = 1;
 			continue;
 		}
 
@@ -187,35 +157,35 @@ int main() {
 			continue;
 		}
 
-		if (step == CarType_Q) {
+		if (step == 1) {
 			selectCarType(answer);
 			delay(1500);
-			step = Engine_Q;
+			step = 2;
 		}
-		else if (step == Engine_Q) {
+		else if (step == 2) {
 			selectEngine(answer);
 			delay(1500);
-			step = BreakSystem_Q;
+			step = 3;
 		}
-		else if (step == BreakSystem_Q) {
+		else if (step == 3) {
 			selectBreakSystem(answer);
 			delay(1500);
-			step = SteeringSystem_Q;
+			step = 4;
 		}
-		else if (step == SteeringSystem_Q) {
+		else if (step == 4) {
 			selectSteeringSystem(answer);
 			delay(1500);
-			step = Run_Test;
+			step = 5;
 		}
-		else if (step == Run_Test && answer == 1) {
+		else if (step == 5 && answer == 1) {
 			runProducedCar();
 			next();
 		}
-		else if (step == Run_Test && answer == 2) {
+		else if (step == 5 && answer == 2) {
 			infoProducedCar();
 			next();
 		}
-		else if (step == Run_Test && answer == 3) {
+		else if (step == 5 && answer == 3) {
 			testProducedCar();
 			next();
 		}
@@ -224,34 +194,34 @@ int main() {
 }
 
 void selectCarType(int answer) {
-	stack[CarType_Q] = answer;
+	stack[1] = answer;
 	if (answer == 1) printf("차량 타입으로 세단을 선택하셨습니다.\n");
 	if (answer == 2) printf("차량 타입으로 SUV을 선택하셨습니다.\n");
 	if (answer == 3) printf("차량 타입으로 TRUCK을 선택하셨습니다.\n");
 }
 
 void selectEngine(int answer) {
-	stack[Engine_Q] = answer;
+	stack[2] = answer;
 	if (answer == 1) printf("GM 엔진을 선택하셨습니다.\n");
 	if (answer == 2) printf("TOYOTA 엔진을 선택하셨습니다.\n");
 	if (answer == 3) printf("WIA 엔진을 선택하셨습니다.\n");
 }
 
 void selectBreakSystem(int answer) {
-	stack[BreakSystem_Q] = answer;
+	stack[3] = answer;
 	if (answer == 1) printf("MANDO 제동장치를 선택하셨습니다.\n");
 	if (answer == 2) printf("CONTINENTAL 제동장치를 선택하셨습니다.\n");
 	if (answer == 3) printf("BOSCH 제동장치를 선택하셨습니다.\n");
 }
 
 void selectSteeringSystem(int answer) {
-	stack[SteeringSystem_Q] = answer;
+	stack[4] = answer;
 	if (answer == 1) printf("BOSCH 제동장치를 선택하셨습니다.\n");
 	if (answer == 2) printf("MOBIS 제동장치를 선택하셨습니다.\n");
 }
 
 void runProducedCar() {
-	if (stack[Engine_Q] == 4) {
+	if (stack[2] == 4) {
 		printf("엔진이 고장났습니다.\n");
 		printf("자동차가 움직이지 않습니다. ");
 	}
@@ -260,8 +230,9 @@ void runProducedCar() {
 	}
 }
 
+/*
 void testProducedCar() {
-	if (stack[CarType_Q] == SEDAN && stack[BreakSystem_Q] == CONTINENTAL) {
+	if (stack[1] == static_cast<int>(CarType::SEDAN) && stack[3] == static_cast<int>(CarType::CONTINENTAL)) {
 		printf("자동차 테스트 결과 : FAIL\n");
 		printf("Sedan은 Continental 제동장치를 쓸 수 없습니다 ");
 	}
@@ -290,6 +261,7 @@ void testProducedCar() {
 	}
 
 }
+*/
 
 void infoProducedCar() {
 	printf(CLEAR_SCREEN);
