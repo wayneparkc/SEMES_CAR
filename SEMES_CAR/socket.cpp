@@ -1,6 +1,9 @@
-#include <iostream>
+#ifndef SERVER_HPP
+#define SERVER_HPP
+
 #include <boost/asio.hpp>
-#include <thread>
+#include <string>
+#include <iostream>
 
 using namespace boost::asio;
 using ip::tcp;
@@ -14,7 +17,6 @@ bool isValidCombination(CarType car, EngineType engine, BrakeType brake, Steerin
     return true;
 };
 
-
 void handleClient(tcp::socket socket) {
     try {
         char buffer[1024];
@@ -27,7 +29,7 @@ void handleClient(tcp::socket socket) {
         }
 
         std::string input(buffer, length);
-        
+
         int carChoice, engineChoice, brakeChoice, steeringChoice;
         sscanf(input.c_str(), "%d,%d,%d,%d", &carChoice, &engineChoice, &brakeChoice, &steeringChoice);
 
@@ -45,13 +47,13 @@ void handleClient(tcp::socket socket) {
             boost::asio::write(socket, boost::asio::buffer(errorResponse));
         }
 
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 }
 
-
-int main() {
+void startServer() {
     try {
         io_context ioService;
         tcp::acceptor acceptor(ioService, tcp::endpoint(tcp::v4(), 8080));
@@ -66,6 +68,6 @@ int main() {
     catch (const std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
-
-    return 0;
 }
+
+#endif 
