@@ -27,16 +27,38 @@ interface Car{
 	BreakSystem bs;
 	SteeringSystem steer;
 
-	void setEngine(Engine _engine) {
-		this->engine = _engine;
+	void setEngine(int engine) {
+		if (engine == 1) this->engine = Engine::GM;
+		else if (engine == 2) this->engine = Engine::TOYOTA;
+		else if (engine == 3) this->engine = Engine::WIA;
 	}
 
-	void setBreak(BreakSystem _bs) {
-		this->bs = _bs;
+	void setBreak(int breaksys) {
+		if (breaksys == 1) this->bs = BreakSystem::MANDO;
+		else if (breaksys == 2) this->bs = BreakSystem::CONTINENTAL;
+		else if (breaksys == 3) this->bs = BreakSystem::BOSCH_B;
 	}
 
-	void setSteering(SteeringSystem _steer) {
-		this->steer = _steer;
+	void setSteering(int steeringsys) {
+		if (steeringsys == 1) this->steer = SteeringSystem::BOSCH_S;
+		else if (steeringsys == 2) this->steer = SteeringSystem::MOBIS;
+	}
+
+	std::string getEngine() {
+		if (static_cast<int>(this->engine) == 1) return "GM";
+		else if (static_cast<int>(this->engine) == 2) return "TOYOTA";
+		else if (static_cast<int>(this->engine) == 3) return "WIA";
+	}
+
+	std::string getBreak() {
+		if (static_cast<int>(this->bs) == 1) return "MANDO";
+		else if (static_cast<int>(this->bs) == 2) return "CONTINENTAL";
+		else if (static_cast<int>(this->bs) == 3) return "BOSCH_B";
+	}
+
+	std::string getSteering() {
+		if (static_cast<int>(this->steer) == 1) return "BOSCH_S";
+		else if (static_cast<int>(this->steer) == 2) return "MOBIS";
 	}
 
 	void checkSteer() {
@@ -192,6 +214,45 @@ public:
 		return input();
 	}
 
+	void info(std::unique_ptr<Car> car) {
+		printf(CLEAR_SCREEN);
+		if (dynamic_cast<Sedan*>(car.get())) {
+			printf("        _________\n");
+			printf("       /|        |\n");
+			printf("  ____/_|________|______\n");
+			printf(" |                    o |\n");
+			printf(" '-(@)------------(@)--'\n");
+			printf("===============================\n");
+			printf("제조된 자동차 정보\n");
+			printf("차량 타입 : Sedan\n");
+		}
+		else if (dynamic_cast<SUV*>(car.get())) {
+			printf("        _______________\n");
+			printf("       /|              |\n");
+			printf("  ____/_|______________|_____\n");
+			printf(" |                        o  |\n");
+			printf(" '-(@)------------------(@)--'\n");
+			printf("===============================\n");
+			printf("제조된 자동차 정보\n");
+			printf("차량 타입 : Suv\n");
+		}
+		else if (dynamic_cast<Truck*>(car.get())) {
+			printf("     _________\n");
+			printf("   /|         |\n");
+			printf("  /_|_________|__________________\n");
+			printf(" |                            o  |\n");
+			printf(" '-(@)----------------------(@)--'\n");
+			printf("===============================\n");
+			printf("제조된 자동차 정보\n");
+			printf("차량 타입 : Truck\n");
+		}
+		std::cout << "엔     진 : " << car->getEngine() << "\n";
+		std::cout << "제동 장치 : " << car->getBreak() << "\n";
+		std::cout << "조향 장치 : " << car->getSteering() << "\n";
+		printf("===============================\n");
+		printf("정보 닫기 ");
+	}
+
 };
 
 int main() {
@@ -209,16 +270,19 @@ int main() {
 		}
 		else if (console.get_step() == 2) {
 			int engine = console.choose_engine();
-			
+			car->setEngine(engine);
 		}
 		else if (console.get_step() == 3) {
-
+			int breaksys = console.choose_break();
+			car->setBreak(breaksys);
 		}
 		else if (console.get_step() == 4) {
-
+			int steeringsys = console.choose_steering();
+			car->setSteering(steeringsys);
 		}
 		else if (console.get_step() == 5) {
-
+			int action = console.choose_action();
+			
 		}
 	}
 }

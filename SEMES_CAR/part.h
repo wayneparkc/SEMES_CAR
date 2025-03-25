@@ -10,23 +10,23 @@ enum class QuestionType : uint8_t {
 
 enum class CarType : uint8_t {
     SEDAN = 1,
-    SUV,
-    TRUCK
+    SUV=2,
+    TRUCK=3
 };
 
 enum class Engine : uint8_t {
     GM = 1,
-    TOYOTA,
-    WIA
+    TOYOTA = 2,
+    WIA = 3
 };
 
 enum class BreakSystem : uint8_t {
     MANDO = 1,
-    CONTINENTAL,
-    BOSCH_B
+    CONTINENTAL = 2,
+    BOSCH_B = 3
 };
 
 enum class SteeringSystem : uint8_t {
     BOSCH_S = 1,
-    MOBIS
+    MOBIS = 2
 };

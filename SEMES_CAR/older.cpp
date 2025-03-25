@@ -13,7 +13,7 @@ void selectBreakSystem(int answer);
 void selectSteeringSystem(int answer);
 void runProducedCar();
 void infoProducedCar();
-void testProducedCar();
+// void testProducedCar();
 void delay(int ms);
 
 void delay(int ms) {
@@ -183,10 +183,6 @@ int main() {
 		}
 		else if (step == 5 && answer == 2) {
 			infoProducedCar();
-			next();
-		}
-		else if (step == 5 && answer == 3) {
-			testProducedCar();
 			next();
 		}
 	}
