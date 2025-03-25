@@ -1,90 +1,64 @@
-#include <iostream>
-#include <string>
-#include <unordered_map>
-#include "part.h"
-#define interface struct
+#include "Car.h"
+#include <memory>
 
-class different_brand_error : public std::exception {
-public:
-	different_brand_error(const char* msg) : exception{ msg } {};
-};
+// different_brand_error 생성자 구현
+different_brand_error::different_brand_error(const char* msg) : std::exception(msg) {}
 
-interface Car{
-	//Enum Class Type는 1부터 시작.
-	Engine engine; 
-	BreakSystem bs;
-	SteeringSystem steer;
+// Car 클래스의 checkSteer() 함수 구현
+void Car::checkSteer() {
+    if (BreakSystem::BOSCH_B == bs && SteeringSystem::BOSCH_S != steer) {
+        throw different_brand_error("BOSCH 제동장치는 BOSCH 조향장치와 호환됩니다.");
+    }
+}
 
-	void checkSteer() {
-		if (BreakSystem::BOSCH_B == bs && SteeringSystem::BOSCH_S != steer) {
-			// 에러 발생
-			throw different_brand_error("BOSCH 제동장치는 BOSCH 조향장치와 호환됩니다.");
-		}
-	}
-	virtual void test() = 0;
-};
+// Sedan 클래스의 checkBreak() 및 test() 함수 구현
+void Sedan::checkBreak() {
+    if (BreakSystem::CONTINENTAL == bs) {
+        // 에러 발생
+    }
+}
 
-class Sedan : public Car {
-private:
-	void checkBreak() {
-		if (BreakSystem::CONTINENTAL == bs) {
-			// 에러 발생
+void Sedan::test() {
+    checkSteer();
+    checkBreak();
+}
 
-		}
-	}
+// SUV 클래스의 checkEngine() 및 test() 함수 구현
+void SUV::checkEngine() {
+    if (Engine::TOYOTA == engine) {
+        // 에러 발생
+    }
+}
 
-public:
-	// Car을(를) 통해 상속됨
-	void test() override {
-		checkSteer();
-		checkBreak();
-	}
-};
+void SUV::test() {
+    checkSteer();
+    checkEngine();
+}
 
-class SUV : public Car {
-private:
-	void checkEngine() {
-		if (Engine::TOYOTA == engine) {
-			// 에러 발생
+// Truck 클래스의 checkEngine(), checkBreakSystem() 및 test() 함수 구현
+void Truck::checkEngine() {
+    if (Engine::WIA == engine) {
+        // 에러 발생
+    }
+}
 
-		}
-	}
+void Truck::checkBreakSystem() {
+    if (BreakSystem::MANDO == bs) {
+        // 에러 발생
+    }
+}
 
-public:
-	// Car을(를) 통해 상속됨
-	void test() override {
-		checkSteer();
-		checkEngine();
-	}
-};
+void Truck::test() {
+    checkSteer();
+    checkEngine();
+    checkBreakSystem();
+}
 
-class Truck : public Car {
-private:
-	void checkEngine() {
-		if (Engine::WIA == engine) {
-			// 에러 발생
-
-		}
-	}
-	void checkBreakSystem() {
-		if (BreakSystem::MANDO == bs) {
-			// 에러 발생
-
-		}
-	}
-
-public:
-	// Car을(를) 통해 상속됨
-	void test() override {
-		checkSteer();
-		checkEngine();
-		checkBreakSystem();
-	}
-};
+// Factory 함수 구현
 std::unique_ptr<Car> Factor(std::string name) {
-	if(name == "Sedan")
-		return std::make_unique<Sedan>();
-	else if (name == "SUV")
-		return std::make_unique<SUV>();
-	return std::make_unique<Truck>();
+    if (name == "Sedan")
+        return std::make_unique<Sedan>();
+    else if (name == "SUV")
+        return std::make_unique<SUV>();
+    return std::make_unique<Truck>();
 }
