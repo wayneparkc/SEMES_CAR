@@ -1,4 +1,5 @@
-#include <stdio.h>
+/*
+* #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -61,7 +62,7 @@ int main() {
 	int step = CarType_Q;
 
 	while (1) {
-
+		
 		if (step == CarType_Q) {
 			printf(CLEAR_SCREEN);
 
@@ -276,3 +277,5 @@ void testProducedCar() {
 	}
 
 }
+*/
+
