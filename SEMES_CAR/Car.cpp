@@ -10,7 +10,8 @@ public:
 };
 
 interface Car{
-	Engine engine;
+	//Enum Class Type는 1부터 시작.
+	Engine engine; 
 	BreakSystem bs;
 	SteeringSystem steer;
 
@@ -80,10 +81,10 @@ public:
 		checkBreakSystem();
 	}
 };
-std::shared_ptr<Car> Factor(std::string name) {
+std::unique_ptr<Car> Factor(std::string name) {
 	if(name == "Sedan")
-		return std::make_shared<Sedan>();
+		return std::make_unique<Sedan>();
 	else if (name == "SUV")
-		return std::make_shared<SUV>();
-	return std::make_shared<Truck>();
+		return std::make_unique<SUV>();
+	return std::make_unique<Truck>();
 }
