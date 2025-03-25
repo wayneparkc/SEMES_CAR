@@ -10,10 +10,19 @@ public:
 };
 
 interface Car{
-	//Enum Class Type는 1부터 시작.
-	Engine engine; 
+
+	Engine engine;
 	BreakSystem bs;
 	SteeringSystem steer;
+
+	//Enum Class Type는 1부터 시작.
+	virtual void test() = 0;
+
+	void Set(Engine _engine, BreakSystem _bs, SteeringSystem _steer) {
+		this->engine = _engine;
+		this->bs = _bs;
+		this->steer = _steer;
+	}
 
 	void checkSteer() {
 		if (BreakSystem::BOSCH_B == bs && SteeringSystem::BOSCH_S != steer) {
@@ -21,7 +30,6 @@ interface Car{
 			throw different_brand_error("BOSCH 제동장치는 BOSCH 조향장치와 호환됩니다.");
 		}
 	}
-	virtual void test() = 0;
 };
 
 class Sedan : public Car {
