@@ -1,3 +1,4 @@
 ﻿  Car.cpp
-MSVCRTD.lib(exe_main.obj) : error LNK2019: main"int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) 함수에서 참조되는 확인할 수 없는 외부 기호
-C:\Users\user\Desktop\SEMES_CAR\SEMES_CAR\x64\Debug\SEMES_CAR.exe : fatal error LNK1120: 1개의 확인할 수 없는 외부 참조입니다.
+  SEMES_CAR.vcxproj -> C:\Users\user\Desktop\SEMES_CAR\SEMES_CAR\x64\Debug\SEMES_CAR.exe
+  'pwsh.exe'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+  배치 파일이 아닙니다.
