@@ -4,8 +4,6 @@
 #include "Truck.h"
 #include <memory>
 
-
-
 void Car::setEngine(int engine) {
 	if (engine == 1) this->engine = Engine::GM;
 	else if (engine == 2) this->engine = Engine::TOYOTA;
@@ -18,7 +16,7 @@ void Car::setBreak(int breaksys) {
 	else if (breaksys == 3) this->bs = BreakSystem::BOSCH_B;
 }
 
-void Car:: setSteering(int steeringsys) {
+void Car::setSteering(int steeringsys) {
 	if (steeringsys == 1) this->steer = SteeringSystem::BOSCH_S;
 	else if (steeringsys == 2) this->steer = SteeringSystem::MOBIS;
 }
@@ -41,9 +39,9 @@ std::string Car::getSteering() {
 }
 
 void Car::checkSteer() {
-	if (BreakSystem::BOSCH_B == bs && SteeringSystem::BOSCH_S != steer) {
+	if (BreakSystem::BOSCH_B == bs && SteeringSystem::BOSCH_S != steer || BreakSystem::BOSCH_B != bs && SteeringSystem::BOSCH_S == steer) {
 		// 에러 발생
-		throw different_brand_error("BOSCH 제동장치는 BOSCH 조향장치와 호환됩니다.");
+		throw different_brand_error("BOSCH 제동장치는 BOSCH 조향장치만 호환됩니다.");
 	}
 }
 void Car::run() {
@@ -57,7 +55,18 @@ void Car::run() {
 	std::cin.ignore();
 	std::cin.get();
 }
-
+Car::Car() {
+	car_step = {
+		{2, [this](int v) {this->setEngine(v); }},
+		{3, [this](int v) {this->setBreak(v); }},
+		{4, [this](int v) {this->setSteering(v); }},
+		{5, [this](int v) {
+			if (v == 1) this->run();
+			else if (v == 2) this->info();
+			else this->test();
+		}},
+	};
+}
 
 std::unique_ptr<Car> Factor(int type) {
 	if (type == 1)

@@ -8,8 +8,31 @@ void SUV::checkEngine() {
 }
 
 void SUV::test() {
-	checkSteer();
-	checkEngine();
+	bool flag = true;
+	try {
+		checkSteer();
+		checkEngine();
+	}
+	catch (const not_make_break& e) {
+		flag = false;
+		std::cerr << e.what() << std::endl;
+	}
+	catch (const not_make_engine& e) {
+		flag = false;
+		std::cerr << e.what() << std::endl;
+	}
+	catch (const different_brand_error& e) {
+		flag = false;
+		std::cerr << e.what() << std::endl;
+	}
+	if (flag)
+		std::cout << "테스트가 정상적으로 마무리 되었습니다.\n";
+	else
+		std::cout << "\n위 이유로 인한 불량입니다.\n";
+	printf("===============================\n");
+	printf("정보 닫기 [Enter]");
+	std::cin.ignore();
+	std::cin.get();
 }
 
 void SUV::info() {
