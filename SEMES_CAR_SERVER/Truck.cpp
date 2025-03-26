@@ -2,20 +2,13 @@
 void Truck::checkEngine() {
 	if (Engine::WIA == engine) {
 		// 에러 발생
-		throw not_make_engine("WIA do not make the engine for Turck.");
+		throw not_make_engine("WIA do not make the engine for Truck.");
 	}
 }
 void Truck::checkBreakSystem() {
-	try {
-		if (BreakSystem::MANDO == bs) {
-			// 에러 발생
-			throw not_make_break("Mando do not make the steer for Turck.");
-		}
-	}
-	catch (const not_make_break& e) {
-		std::cerr << e.what() << std::endl;
-		printf("===============================\n");
-		printf("정보 닫기 [Enter]");
+	if (BreakSystem::MANDO == bs) {
+		// 에러 발생
+		throw not_make_break("Mando do not make the steer for Truck.");
 	}
 }
 std::string Truck::test() {

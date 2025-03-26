@@ -15,13 +15,13 @@ void handleClient(tcp::socket socket) {
         char buffer[1024] = { 0 };
         boost::system::error_code error;
         size_t length = socket.receive(boost::asio::buffer(buffer), 0, error);
-
         if (error) {
             std::cerr << "Error receiving data: " << error.message() << std::endl;
             return;
         }
 
         std::string input(buffer, length);
+        std::cout << "ют╥б╣И╬Н©х: " << input << '\n';
 
         int carChoice, engineChoice, brakeChoice, steeringChoice;
         sscanf_s(input.c_str(), "%d,%d,%d,%d", &carChoice, &engineChoice, &brakeChoice, &steeringChoice);
