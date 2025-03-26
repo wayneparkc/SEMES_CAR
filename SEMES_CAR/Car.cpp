@@ -4,8 +4,6 @@
 #include "Truck.h"
 #include <memory>
 
-
-
 void Car::setEngine(int engine) {
 	if (engine == 1) this->engine = Engine::GM;
 	else if (engine == 2) this->engine = Engine::TOYOTA;
@@ -32,7 +30,7 @@ interface Car{
 	virtual void test() = 0;
 };
 
-void Car:: setSteering(int steeringsys) {
+void Car::setSteering(int steeringsys) {
 	if (steeringsys == 1) this->steer = SteeringSystem::BOSCH_S;
 	else if (steeringsys == 2) this->steer = SteeringSystem::MOBIS;
 }
@@ -55,9 +53,9 @@ std::string Car::getSteering() {
 }
 
 void Car::checkSteer() {
-	if (BreakSystem::BOSCH_B == bs && SteeringSystem::BOSCH_S != steer) {
+	if (BreakSystem::BOSCH_B == bs && SteeringSystem::BOSCH_S != steer || BreakSystem::BOSCH_B != bs && SteeringSystem::BOSCH_S == steer) {
 		// 에러 발생
-		throw different_brand_error("BOSCH 제동장치는 BOSCH 조향장치와 호환됩니다.");
+		throw different_brand_error("BOSCH 제동장치는 BOSCH 조향장치만 호환됩니다.");
 	}
 }
 void Car::run() {
@@ -71,17 +69,21 @@ void Car::run() {
 	std::cin.ignore();
 	std::cin.get();
 }
+Car::Car() {
+	car_step = {
+		{2, [this](int v) {this->setEngine(v); }},
+		{3, [this](int v) {this->setBreak(v); }},
+		{4, [this](int v) {this->setSteering(v); }},
+		{5, [this](int v) {
+			if (v == 1) this->run();
+			else if (v == 2) this->info();
+			else this->test();
+		}},
+	};
+}
 
-public:
-	// Car을(를) 통해 상속됨
-	void test() override {
-		checkSteer();
-		checkEngine();
-		checkBreakSystem();
-	}
-};
-std::unique_ptr<Car> Factor(std::string name) {
-	if(name == "Sedan")
+std::unique_ptr<Car> Factor(int type) {
+	if (type == 1)
 		return std::make_unique<Sedan>();
 	else if (type == 2)
 		return std::make_unique<SUV>();

@@ -6,15 +6,46 @@ void Truck::checkEngine() {
 	}
 }
 void Truck::checkBreakSystem() {
-	if (BreakSystem::MANDO == bs) {
-		// 에러 발생
-		throw not_make_break(" Mando는 Truck용 제동장치를 만들지 않습니다.");
+	try {
+		if (BreakSystem::MANDO == bs) {
+			// 에러 발생
+			throw not_make_break(" Mando는 Truck용 제동장치를 만들지 않습니다.");
+		}
+	}
+	catch (const not_make_break& e) {
+		std::cerr << e.what() << std::endl;
+		printf("===============================\n");
+		printf("정보 닫기 [Enter]");
 	}
 }
 void Truck::test() {
-	checkSteer();
-	checkEngine();
-	checkBreakSystem();
+	bool flag = true;
+	try {
+		checkSteer();
+		checkEngine();
+		checkBreakSystem();
+	}
+	catch (const not_make_break& e) {
+		flag = false;
+		std::cerr << e.what() << std::endl;
+	}
+	catch (const not_make_engine& e) {
+		flag = false;
+		std::cerr << e.what() << std::endl;
+	}
+	catch (const different_brand_error& e) {
+		flag = false;
+		std::cerr << e.what() << std::endl;
+	}
+	if (flag)
+		std::cout << "테스트가 정상적으로 마무리 되었습니다.\n";
+	else
+		std::cout << "\n위 이유로 인한 불량입니다.\n";
+
+	printf("===============================\n");
+	printf("정보 닫기 [Enter]");
+	std::cin.ignore();
+	std::cin.get();
 }
 void Truck::info() {
 	printf("     _________\n");
