@@ -77,5 +77,26 @@
 ### 4. SEMES_CAR_CLI
 
 <b> 주요 특징 </b>
+1. Socket을 통해 서버에 차량 제작 요청을 보낸다.
+2. Console 클래스의 각 함수로 차량 타입 및 3가지 부품을 입력 받는다.
+3. 요청에 따라 SU, FA 두가지 응답을 받을 수 있고, FA일 경우에 실패 원인에 따른 메시지를 추가로 응답 받는다. 
+4. SEMES_CAR에서 구성한 헤더 및 cpp 구조를 재사용하였다.
 
 <b> 세부 특징 </b>
+
+    a. Car.cpp / h
+       차량 부품, 차량 테스트
+    b. Console.cpp / h
+       CLI 입출력
+    c. main.cpp
+       socket 서버 시작.
+    d. Sedan.cpp / h
+       세단 전용 테스트
+    e. SUV.cpp / h
+       SUV 전용 테스트
+    f. Truck.cpp / h
+       Truck 전용 테스트
+    g. Truck.cpp / h
+       Truck 전용 테스트
+    h. part.h
+       enum class를 통해 차량 부품 관리
