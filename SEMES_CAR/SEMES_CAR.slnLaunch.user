@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "새 프로필",
+    "Projects": [
+      {
+        "Path": "SEMES_CAR.vcxproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\SEMES_SERVER\\SEMES_SERVER.vcxproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

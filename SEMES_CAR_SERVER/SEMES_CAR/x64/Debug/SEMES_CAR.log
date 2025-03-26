@@ -1,0 +1,24 @@
+﻿  Installing vcpkg dependencies to C:\Users\user\Desktop\SEMES_CAR\SEMES_CAR\vcpkg_installed\x64-windows\
+  "C:\vc\vcpkg\vcpkg.exe" install  --x-wait-for-lock --triplet "x64-windows" --vcpkg-root "C:\vc\vcpkg\\" "--x-manifest-root=C:\Users\user\Desktop\SEMES_CAR\SEMES_CAR\\" "--x-install-root=C:\Users\user\Desktop\SEMES_CAR\SEMES_CAR\vcpkg_installed\x64-windows\\" 
+  삼중항 x64-windows에 대한 컴파일러 해시 감지 중...
+  컴파일러 찾음: C:/Program Files/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/cl.exe
+  요청된 모든 패키지가 현재 설치되어 있습니다.
+  총 설치 시간: 777 us
+  boost-asio은 CMake 대상을 제공합니다.
+  
+    # 이 값은 추론적으로 생성되며 올바르지 않을 수 있습니다.
+    find_package(boost_asio CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE Boost::asio)
+  
+  curl is compatible with built-in CMake targets:
+  
+      find_package(CURL REQUIRED)
+      target_link_libraries(main PRIVATE CURL::libcurl)
+  
+  Car.cpp
+C:\Users\user\Desktop\SEMES_CAR\SEMES_CAR\Car.cpp(28,1): warning C4715: 'Car::getEngine': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\user\Desktop\SEMES_CAR\SEMES_CAR\Car.cpp(39,1): warning C4715: 'Car::getSteering': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\user\Desktop\SEMES_CAR\SEMES_CAR\Car.cpp(34,1): warning C4715: 'Car::getBreak': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  SEMES_CAR.vcxproj -> C:\Users\user\Desktop\SEMES_CAR\SEMES_CAR\x64\Debug\SEMES_CAR.exe
+  'pwsh.exe'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+  배치 파일이 아닙니다.

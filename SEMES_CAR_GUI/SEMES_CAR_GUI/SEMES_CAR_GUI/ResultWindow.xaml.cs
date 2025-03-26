@@ -27,11 +27,10 @@ namespace SEMES_CAR_GUI {
         string[] breakSystems = { "", "/assets/mando.png", "/assets/continental.png", "/assets/bosch.png" };
         string[] steerSystems = { "", "/assets/bosch.png", "/assets/mobis.png" };
         
-        public ResultWindow(string options) {
+        public ResultWindow(string message, string options) {
             InitializeComponent();
             changeImg(options);
-            RunButton.Click += RunButton_Click;
-            TestButton.Click += TestButton_Click;
+            GoFirstButton.Click += GoFirstButton_Click;
         }
 
         private void changeImg(string options) {
@@ -42,14 +41,11 @@ namespace SEMES_CAR_GUI {
             steerSystem.Source = new BitmapImage(new Uri(steerSystems[optionList[3]], UriKind.Relative));
         }
 
-        private void RunButton_Click(object sender, RoutedEventArgs e)
+        private void GoFirstButton_Click(object sender, RoutedEventArgs e)
         {
-            
-        }
-
-        private void TestButton_Click(object sender, RoutedEventArgs e)
-        {
-            
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
 
 

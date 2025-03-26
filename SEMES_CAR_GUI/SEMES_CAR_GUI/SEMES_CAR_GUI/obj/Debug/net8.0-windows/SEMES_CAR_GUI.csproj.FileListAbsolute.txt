@@ -41,3 +41,5 @@ C:\Users\user\Desktop\프로젝트\SEMES_CAR\SEMES_CAR_GUI\SEMES_CAR_GUI\SEMES_C
 C:\Users\user\Desktop\프로젝트\SEMES_CAR\SEMES_CAR_GUI\SEMES_CAR_GUI\SEMES_CAR_GUI\obj\Debug\net8.0-windows\SEMES_CAR_GUI.pdb
 C:\Users\user\Desktop\프로젝트\SEMES_CAR\SEMES_CAR_GUI\SEMES_CAR_GUI\SEMES_CAR_GUI\obj\Debug\net8.0-windows\SEMES_CAR_GUI.genruntimeconfig.cache
 C:\Users\user\Desktop\프로젝트\SEMES_CAR\SEMES_CAR_GUI\SEMES_CAR_GUI\SEMES_CAR_GUI\obj\Debug\net8.0-windows\ref\SEMES_CAR_GUI.dll
+C:\Users\user\Desktop\프로젝트\SEMES_CAR\SEMES_CAR_GUI\SEMES_CAR_GUI\SEMES_CAR_GUI\obj\Debug\net8.0-windows\ErrorDialog.baml
+C:\Users\user\Desktop\프로젝트\SEMES_CAR\SEMES_CAR_GUI\SEMES_CAR_GUI\SEMES_CAR_GUI\obj\Debug\net8.0-windows\ErrorDialog.g.cs
