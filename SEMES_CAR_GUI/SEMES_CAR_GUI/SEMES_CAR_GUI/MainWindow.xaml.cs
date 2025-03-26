@@ -62,7 +62,9 @@ namespace SEMES_CAR_GUI
             {
                 // 성공 처리: ResultPage로 선택한 옵션을 전달
                 string successMessage = result.Substring(2); // "Su" 이후의 메시지
-                //ResultWindow resultPage = new ResultWindow(successMessage, selectedOptions);
+                ResultWindow resultPage = new ResultWindow(successMessage, selectedOptionsString);
+                resultPage.Show();
+                this.Close();
                 //this.NavigationService.Navigate(resultPage); // ResultPage로 이동
             }
             else 
@@ -74,7 +76,7 @@ namespace SEMES_CAR_GUI
                 // 옵션 초기화
                 ResetButton_Click(sender, e);  // Reset all options
             }
-
+            
            
         }
 
