@@ -1,7 +1,7 @@
 #pragma once
+#include <utility>
 #include <map>
 #include <stdexcept>
-
 enum class QuestionType : uint8_t {
     CarType_Q = 1,
     Engine_Q = 2,
@@ -56,7 +56,6 @@ inline const std::map<int, SteeringSystem> steeringMap = {
     {2, SteeringSystem::MOBIS}
 };
 
-// 범용 변환 함수
 template <typename T>
 T intToEnum(int value, const std::map<int, T>& enumMap) {
     auto it = enumMap.find(value);
