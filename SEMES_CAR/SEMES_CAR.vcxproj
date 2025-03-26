@@ -136,6 +136,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sedan.cpp" />
     <ClCompile Include="Sedan.h" />
+    <ClCompile Include="socket.cpp" />
     <ClCompile Include="SUV.cpp" />
     <ClCompile Include="Truck.cpp" />
   </ItemGroup>
