@@ -24,7 +24,7 @@ void Car::setSteering(int steeringsys) {
 void Car::checkSteer() {
 	if (BreakSystem::BOSCH_B == bs && SteeringSystem::BOSCH_S != steer || BreakSystem::BOSCH_B != bs && SteeringSystem::BOSCH_S == steer) {
 		// 에러 발생
-		throw different_brand_error("BOSCH 제동장치는 BOSCH 조향장치만 호환됩니다.");
+		throw different_brand_error("BOSCH's steer only need to BOSCH's steer.");
 	}
 }
 

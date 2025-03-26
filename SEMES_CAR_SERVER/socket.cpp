@@ -53,7 +53,7 @@ void startServer() {
         io_context ioService;
         tcp::acceptor acceptor(ioService, tcp::endpoint(tcp::v4(), 8080));
 
-        std::cout << "Server running, waiting for connections..." << std::endl;
+        std::cout << "차량 조립 테스트 서버를 구동합니다." << std::endl;
         while (true) {
             tcp::socket socket(ioService);
             acceptor.accept(socket);

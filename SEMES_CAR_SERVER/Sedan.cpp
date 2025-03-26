@@ -3,7 +3,7 @@
 void Sedan::checkBreak() {
 	if (BreakSystem::CONTINENTAL == bs) {
 		// 에러 발생
-		throw not_make_break("CONTINENTAL 사는 세단의 제동장치를 만들지 않습니다.");
+		throw not_make_break("CONTINENTAL do not make the break to Sedan.");
 	}
 }
 // Car을(를) 통해 상속됨
@@ -30,7 +30,7 @@ std::string Sedan::test() {
 		std::cerr << e.what() << std::endl;
 	}
 	std::string message = flag ? "SU " : "FA ";
-	message += errmsg.empty() ? "차량이 정상적으로 조립되었습니다." : errmsg;
+	message += errmsg.empty() ? "Sedan Complete" : errmsg;
 	return message;
 }
 
