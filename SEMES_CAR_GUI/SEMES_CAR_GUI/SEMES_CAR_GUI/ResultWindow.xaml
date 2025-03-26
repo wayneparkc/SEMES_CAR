@@ -7,9 +7,26 @@
         mc:Ignorable="d"
         Title="Result Window" Height="700" Width="500">
     <Grid>
-        <Image x:Name="carType" Width="400" Height="200" Margin="50,242,50,242" Stretch="Uniform" Source="/assets/sedan.png"/>
-        <Image x:Name="engine" Width="100" Height="50" Margin="50,242,50,242" Stretch="Uniform"/>
-        <Image x:Name="breakSystem" Width="100" Height="50" Margin="50,242,50,242" Stretch="Uniform"/>
-        <Image x:Name="steer" Width="100" Height="50" Margin="42,305,308,304" Stretch="Uniform"/>
+        <Image x:Name="carType" Margin="40,194,40,194" Stretch="Uniform" Source="/assets/sedan.png"/>
+        <Image x:Name="engine" Margin="8,162,362,422" Stretch="Uniform" Source="/assets/gm.png"/>
+        <Image x:Name="breakSystem" Width="130" Height="100" Margin="185,162,185,422" Stretch="Uniform" Source="/assets/continental.png"/>
+        <Image x:Name="steerSystem" Width="130" Height="100" Margin="359,162,11,422" Stretch="Uniform" Source="/assets/mobis.png"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="31,156,0,0" TextWrapping="Wrap" Text="Engine" VerticalAlignment="Top" Width="84" BorderBrush="{x:Null}" FontWeight="Bold" TextAlignment="Center"/>
+        <TextBox HorizontalAlignment="Center" Height="20" Margin="0,156,0,0" TextWrapping="Wrap" Text="BreakSystem" VerticalAlignment="Top" Width="84" BorderBrush="{x:Null}" FontWeight="Bold" TextAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="381,156,0,0" TextWrapping="Wrap" Text="SteerSystem" VerticalAlignment="Top" Width="86" BorderBrush="{x:Null}" FontWeight="Bold" TextAlignment="Center"/>
+        <Button x:Name="RunButton" Content="RUN" HorizontalAlignment="Left" Height="40" Margin="129,503,0,0" VerticalAlignment="Top" Width="110" Background="#FF182869" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="TestButton" Content="TEST" HorizontalAlignment="Left" Height="40" Margin="264,503,0,0" VerticalAlignment="Top" Width="110" Background="#FF182869" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

@@ -23,63 +23,76 @@ namespace SEMES_CAR_GUI {
     public partial class ResultWindow : Window {
         // 이미지 주소 배열
         string[] car_types = { "", "/assets/sedan.png", "/assets/suv.png", "/assets/truck.png" };
-        string[] engines = { "", "/assets/sedan.png", "/assets/suv.png", "/assets/truck.png" };
-        string[] breakSystems = { "", "/assets/sedan.png", "/assets/suv.png", "/assets/truck.png" };
-        string[] steerSystems = { "", "/assets/sedan.png", "/assets/suv.png", "/assets/truck.png" };
+        string[] engines = { "", "/assets/gm.png", "/assets/toyota.png", "/assets/wia.png" };
+        string[] breakSystems = { "", "/assets/mando.png", "/assets/continental.png", "/assets/bosch.png" };
+        string[] steerSystems = { "", "/assets/bosch.png", "/assets/mobis.png" };
         
-        public ResultWindow() {
+        public ResultWindow(string options) {
             InitializeComponent();
-            changeImg();
+            changeImg(options);
+            RunButton.Click += RunButton_Click;
+            TestButton.Click += TestButton_Click;
         }
 
-        private void changeImg() {
-            carType.Source = new BitmapImage(new Uri(car_types[2], UriKind.Relative));
-            engine.Source = new BitmapImage(new Uri(engines[2], UriKind.Relative));
-            breakSystem.Source = new BitmapImage(new Uri(breakSystems[2], UriKind.Relative));
-            steer.Source = new BitmapImage(new Uri(steerSystems[2], UriKind.Relative));
+        private void changeImg(string options) {
+            int[] optionList = options.Split(',').Select(int.Parse).ToArray();
+            carType.Source = new BitmapImage(new Uri(car_types[optionList[0]], UriKind.Relative));
+            engine.Source = new BitmapImage(new Uri(engines[optionList[1]], UriKind.Relative));
+            breakSystem.Source = new BitmapImage(new Uri(breakSystems[optionList[2]], UriKind.Relative));
+            steerSystem.Source = new BitmapImage(new Uri(steerSystems[optionList[3]], UriKind.Relative));
+        }
+
+        private void RunButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void TestButton_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
 
 
-    //    private void StartSocketListener()
-    //    {
-    //        socketThread = new Thread(() =>
-    //        {
-    //            TcpListener listener = new TcpListener(IPAddress.Any, 12345); // 포트 12345에서 수신
-    //            listener.Start();
-    //            while (true)
-    //            {
-    //                using (TcpClient client = listener.AcceptTcpClient())
-    //                using (NetworkStream stream = client.GetStream())
-    //                {
-    //                    byte[] buffer = new byte[1024];
-    //                    int bytesRead = stream.Read(buffer, 0, buffer.Length);
-    //                    string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
-    //                    UpdateCarType(receivedData);
-    //                }
-    //            }
-    //        });
-    //        socketThread.IsBackground = true;
-    //        socketThread.Start();
-    //    }
+        //    private void StartSocketListener()
+        //    {
+        //        socketThread = new Thread(() =>
+        //        {
+        //            TcpListener listener = new TcpListener(IPAddress.Any, 12345); // 포트 12345에서 수신
+        //            listener.Start();
+        //            while (true)
+        //            {
+        //                using (TcpClient client = listener.AcceptTcpClient())
+        //                using (NetworkStream stream = client.GetStream())
+        //                {
+        //                    byte[] buffer = new byte[1024];
+        //                    int bytesRead = stream.Read(buffer, 0, buffer.Length);
+        //                    string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
+        //                    UpdateCarType(receivedData);
+        //                }
+        //            }
+        //        });
+        //        socketThread.IsBackground = true;
+        //        socketThread.Start();
+        //    }
 
-    //    private void UpdateCarType(string car)
-    //    {
-    //        Dispatcher.Invoke(() =>
-    //        {
-    //            int index = car switch
-    //            {
-    //                "sedan" => 1,
-    //                "suv" => 2,
-    //                "truck" => 3,
-    //                _ => 0
-    //            };
+        //    private void UpdateCarType(string car)
+        //    {
+        //        Dispatcher.Invoke(() =>
+        //        {
+        //            int index = car switch
+        //            {
+        //                "sedan" => 1,
+        //                "suv" => 2,
+        //                "truck" => 3,
+        //                _ => 0
+        //            };
 
-    //            if (index > 0)
-    //            {
-    //                carType.Source = new BitmapImage(new Uri(images[index], UriKind.Relative));
-    //            }
-    //        });
-    //    }
-    //}
-}
+        //            if (index > 0)
+        //            {
+        //                carType.Source = new BitmapImage(new Uri(images[index], UriKind.Relative));
+        //            }
+        //        });
+        //    }
+        //}
+    }
 }
