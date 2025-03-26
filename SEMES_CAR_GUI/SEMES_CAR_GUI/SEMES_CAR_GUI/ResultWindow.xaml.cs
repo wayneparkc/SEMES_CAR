@@ -26,6 +26,7 @@ namespace SEMES_CAR_GUI {
         string[] engines = { "", "/assets/sedan.png", "/assets/suv.png", "/assets/truck.png" };
         string[] breakSystems = { "", "/assets/sedan.png", "/assets/suv.png", "/assets/truck.png" };
         string[] steerSystems = { "", "/assets/sedan.png", "/assets/suv.png", "/assets/truck.png" };
+        
         public ResultWindow() {
             InitializeComponent();
             changeImg();
