@@ -6,3 +6,7 @@ SEMES_CAR/vcpkg_installed/
 SEMES_CAR/x64/
 SEMES_CAR/SEMES_CAR/x64/Debug
 */Debug/*
+SEMES_CAR_SERVER/vcpkg-configuration.json
+SEMES_CAR_SERVER/vcpkg.json
+SEMES_CAR_SERVER/vcpkg_installed/
+SEMES_CAR_SERVER/x64/
