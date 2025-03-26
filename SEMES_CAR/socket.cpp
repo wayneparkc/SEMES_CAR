@@ -1,19 +1,13 @@
-#include <boost/asio.hpp>
 #include <string>
 #include <iostream>
 #include "part.h"
+#include "socket.h"
+#include "Car.h"
 #include <stdexcept>
-
-using namespace boost::asio;
-using ip::tcp;
-
-
 
 bool isValidCombination(int carChoice, int engineChoice, int brakeChoice, int steeringChoice) {
     return true;
 }
-
-
 
 void handleClient(tcp::socket socket) {
     try {
