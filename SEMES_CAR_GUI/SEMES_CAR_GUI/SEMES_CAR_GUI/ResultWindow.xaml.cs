@@ -27,11 +27,18 @@ namespace SEMES_CAR_GUI {
         string[] breakSystems = { "", "/assets/mando.png", "/assets/continental.png", "/assets/bosch.png" };
         string[] steerSystems = { "", "/assets/bosch.png", "/assets/mobis.png" };
         
+<<<<<<< HEAD
         public ResultWindow(string options) {
             InitializeComponent();
             changeImg(options);
             RunButton.Click += RunButton_Click;
             TestButton.Click += TestButton_Click;
+=======
+        public ResultWindow(string message, string options) {
+            InitializeComponent();
+            changeImg(options);
+            GoFirstButton.Click += GoFirstButton_Click;
+>>>>>>> 5a934bd0fb927f9e9e0d71a7d0905de7f3088799
         }
 
         private void changeImg(string options) {
@@ -40,6 +47,7 @@ namespace SEMES_CAR_GUI {
             engine.Source = new BitmapImage(new Uri(engines[optionList[1]], UriKind.Relative));
             breakSystem.Source = new BitmapImage(new Uri(breakSystems[optionList[2]], UriKind.Relative));
             steerSystem.Source = new BitmapImage(new Uri(steerSystems[optionList[3]], UriKind.Relative));
+<<<<<<< HEAD
         }
 
         private void RunButton_Click(object sender, RoutedEventArgs e)
@@ -50,9 +58,18 @@ namespace SEMES_CAR_GUI {
         private void TestButton_Click(object sender, RoutedEventArgs e)
         {
             
+=======
+>>>>>>> 5a934bd0fb927f9e9e0d71a7d0905de7f3088799
         }
 
+        private void GoFirstButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
 
+<<<<<<< HEAD
         //    private void StartSocketListener()
         //    {
         //        socketThread = new Thread(() =>
@@ -94,5 +111,7 @@ namespace SEMES_CAR_GUI {
         //        });
         //    }
         //}
+=======
+>>>>>>> 5a934bd0fb927f9e9e0d71a7d0905de7f3088799
     }
 }
