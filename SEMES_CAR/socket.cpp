@@ -1,21 +1,19 @@
-#ifndef SERVER_HPP
-#define SERVER_HPP
-
 #include <boost/asio.hpp>
 #include <string>
 #include <iostream>
+#include "part.h"
+#include <stdexcept>
 
 using namespace boost::asio;
 using ip::tcp;
 
-enum class CarType { Sedan = 1, SUV, Truck };
-enum class EngineType { GM = 1, TOYOTA, WIA };
-enum class BrakeType { MANDO = 1, Continental, Bosch };
-enum class SteeringType { Bosch = 1, Mobis };
 
-bool isValidCombination(CarType car, EngineType engine, BrakeType brake, SteeringType steering) {
+
+bool isValidCombination(int carChoice, int engineChoice, int brakeChoice, int steeringChoice) {
     return true;
-};
+}
+
+
 
 void handleClient(tcp::socket socket) {
     try {
@@ -31,19 +29,27 @@ void handleClient(tcp::socket socket) {
         std::string input(buffer, length);
 
         int carChoice, engineChoice, brakeChoice, steeringChoice;
-        sscanf(input.c_str(), "%d,%d,%d,%d", &carChoice, &engineChoice, &brakeChoice, &steeringChoice);
+        sscanf_s(input.c_str(), "%d,%d,%d,%d", &carChoice, &engineChoice, &brakeChoice, &steeringChoice);
 
-        CarType carType = static_cast<CarType>(carChoice);
-        EngineType engineType = static_cast<EngineType>(engineChoice);
-        BrakeType brakeType = static_cast<BrakeType>(brakeChoice);
-        SteeringType steeringType = static_cast<SteeringType>(steeringChoice);
 
-        if (isValidCombination(carType, engineType, brakeType, steeringType)) {
-            std::string response = "자동차가 성공적으로 제조되었습니다!\n";
-            boost::asio::write(socket, boost::asio::buffer(response));
+        try {
+            CarType carType = intToEnum(carChoice, carTypeMap);
+            Engine engineType = intToEnum(engineChoice, engineMap);
+            BreakSystem brakeType = intToEnum(brakeChoice, brakeMap);
+            SteeringSystem steeringType = intToEnum(steeringChoice, steeringMap);
+
+            if (isValidCombination(carChoice, engineChoice, brakeChoice, steeringChoice)) {
+                std::string response = "자동차가 성공적으로 제조되었습니다!\n";
+                boost::asio::write(socket, boost::asio::buffer(response));
+            }
+            else {
+                std::string errorResponse = "자동차 제조에 실패했습니다.\n";
+                boost::asio::write(socket, boost::asio::buffer(errorResponse));
+            }
         }
-        else {
-            std::string errorResponse = "자동차 제조에 실패했습니다.\n";
+        catch (const std::invalid_argument& e) {
+            std::cerr << "Invalid combination received: " << e.what() << std::endl;
+            std::string errorResponse = "잘못된 입력이 들어왔습니다. 자동차 제조에 실패했습니다.\n";
             boost::asio::write(socket, boost::asio::buffer(errorResponse));
         }
 
@@ -69,5 +75,3 @@ void startServer() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 }
-
-#endif 

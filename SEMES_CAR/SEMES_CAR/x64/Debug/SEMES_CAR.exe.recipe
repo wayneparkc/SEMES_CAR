@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>C:\Users\user\Desktop\dd\SEMES_CAR\SEMES_CAR\x64\Debug\SEMES_CAR.exe</FullPath>
+=======
+      <FullPath>C:\Users\user\Desktop\SEMES_CAR\SEMES_CAR\x64\Debug\SEMES_CAR.exe</FullPath>
+>>>>>>> 62c0cea7e1e472c569d5ef901b668aa331c93655
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
