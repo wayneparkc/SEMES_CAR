@@ -42,18 +42,18 @@ std::string Car::getSteering() {
 
 void Car::checkSteer() {
     if (BreakSystem::BOSCH_B == bs && SteeringSystem::BOSCH_S != steer || BreakSystem::BOSCH_B != bs && SteeringSystem::BOSCH_S == steer) {
-        // ¿¡·¯ ¹ß»ı
-        throw different_brand_error("BOSCH Á¦µ¿ÀåÄ¡´Â BOSCH Á¶ÇâÀåÄ¡¸¸ È£È¯µË´Ï´Ù.");
+        // ì—ëŸ¬ ë°œìƒ
+        throw different_brand_error("BOSCH ì œë™ì¥ì¹˜ëŠ” BOSCH ì¡°í–¥ì¥ì¹˜ë§Œ í˜¸í™˜ë©ë‹ˆë‹¤.");
     }
 }
 void Car::run() {
     if (this->engine == Engine::GM || this->engine == Engine::TOYOTA || this->engine == Engine::WIA) {
-        std::cout << "ÀÚµ¿Â÷°¡ µ¿ÀÛµË´Ï´Ù.\n";
+        std::cout << "ìë™ì°¨ê°€ ë™ì‘ë©ë‹ˆë‹¤.\n";
     }
     else {
-        std::cout << "¿£ÁøÀÌ °íÀå³µ½À´Ï´Ù.\n";
+        std::cout << "ì—”ì§„ì´ ê³ ì¥ë‚¬ìŠµë‹ˆë‹¤.\n";
     }
-    printf("µ¿ÀÛ Á¤Áö [Enter]");
+    printf("ë™ì‘ ì •ì§€ [Enter]");
     std::cin.ignore();
     std::cin.get();
 }
@@ -67,14 +67,14 @@ void Car::test() {
         boost::asio::io_context io_context;
         tcp::socket socket(io_context);
 
-        std::string host = "210.181.151.27";
+        std::string host = "127.0.0.1";
         int port = 8080;
 
-        // ¼­¹ö¿¡ ¿¬°á
+        // ì„œë²„ì— ì—°ê²°
         tcp::resolver resolver(io_context);
         boost::asio::connect(socket, resolver.resolve(host, std::to_string(port)));
 
-        // ÀÔ·Â µ¥ÀÌÅÍ Çü½Ä¿¡ ¸ÂÃç ¹®ÀÚ¿­À» »ı¼º
+        // ì…ë ¥ ë°ì´í„° í˜•ì‹ì— ë§ì¶° ë¬¸ìì—´ì„ ìƒì„±
         std::stringstream ss;
         ss << this->typeof() << "," << std::to_string(static_cast<int>(this->engine)) << ",";
         ss << std::to_string(static_cast<int>(this->bs)) << "," << std::to_string(static_cast<int>(this->steer));
@@ -82,16 +82,16 @@ void Car::test() {
         std::string message = ss.str();
         //std::cout << "Sending message: " << message << std::endl;
 
-        // ¸Ş½ÃÁö¸¦ ¼­¹ö·Î Àü¼Û
+        // ë©”ì‹œì§€ë¥¼ ì„œë²„ë¡œ ì „ì†¡
         boost::asio::write(socket, boost::asio::buffer(message));
 
-        // ¼­¹ö·ÎºÎÅÍÀÇ ÀÀ´äÀ» ¹ŞÀ½
+        // ì„œë²„ë¡œë¶€í„°ì˜ ì‘ë‹µì„ ë°›ìŒ
         char buffer[1024];
         size_t length = socket.read_some(boost::asio::buffer(buffer));
         std::string response(buffer, length);
         //std::cout << "Server response: " << response << std::endl;
         
-        // ½ÇÆĞ¶ó¸é flag¸¦ º¯È¯ÇÏ°í, ¿¡·¯ ¸Ş½ÃÁö Ãâ·Â
+        // ì‹¤íŒ¨ë¼ë©´ flagë¥¼ ë³€í™˜í•˜ê³ , ì—ëŸ¬ ë©”ì‹œì§€ ì¶œë ¥
         if (response.substr(0, 2) == "FA") {
             flag = 0;
             std::cout << response.substr(3,response.size()-3);
@@ -103,12 +103,12 @@ void Car::test() {
     }
    
     if (flag)
-        std::cout << "Å×½ºÆ®°¡ Á¤»óÀûÀ¸·Î ¸¶¹«¸® µÇ¾ú½À´Ï´Ù.\n";
+        std::cout << "í…ŒìŠ¤íŠ¸ê°€ ì •ìƒì ìœ¼ë¡œ ë§ˆë¬´ë¦¬ ë˜ì—ˆìŠµë‹ˆë‹¤.\n";
     else
-        std::cout << "\nÀ§ ÀÌÀ¯·Î ÀÎÇÑ ºÒ·®ÀÔ´Ï´Ù.\n";
+        std::cout << "\nìœ„ ì´ìœ ë¡œ ì¸í•œ ë¶ˆëŸ‰ì…ë‹ˆë‹¤.\n";
 
     printf("===============================\n");
-    printf("Á¤º¸ ´İ±â [Enter]");
+    printf("ì •ë³´ ë‹«ê¸° [Enter]");
     std::cin.ignore();
     std::cin.get();
 }
