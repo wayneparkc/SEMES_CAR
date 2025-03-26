@@ -5,13 +5,11 @@ SEMES_CAR/vcpkg.json
 SEMES_CAR/vcpkg_installed/
 SEMES_CAR/x64/
 SEMES_CAR/SEMES_CAR/x64/Debug
-<<<<<<< HEAD
 */Debug/*
 SEMES_CAR_SERVER/vcpkg-configuration.json
 SEMES_CAR_SERVER/vcpkg.json
 SEMES_CAR_SERVER/vcpkg_installed/
 SEMES_CAR_SERVER/x64/
-=======
 # 빌드 및 디버그 관련 파일 제외
 bin/
 obj/
@@ -27,4 +25,3 @@ obj/
 *.lref
 *.BuildWithSkipAnalyzers
 
->>>>>>> main
