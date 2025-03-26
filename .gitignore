@@ -5,4 +5,18 @@ SEMES_CAR/vcpkg.json
 SEMES_CAR/vcpkg_installed/
 SEMES_CAR/x64/
 SEMES_CAR/SEMES_CAR/x64/Debug
-*/Debug/*
+# 빌드 및 디버그 관련 파일 제외
+bin/
+obj/
+*.pdb
+*.exe
+*.dll
+*.cache
+*.json
+*.csproj.nuget.*
+*.g.i.cs
+*.baml
+*.editorconfig
+*.lref
+*.BuildWithSkipAnalyzers
+
