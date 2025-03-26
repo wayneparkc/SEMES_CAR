@@ -6,27 +6,52 @@
         xmlns:local="clr-namespace:SEMES_CAR_GUI"
         mc:Ignorable="d"
         Title="Result Window" Height="700" Width="500">
+    <Window.Resources>
+
+        <!-- 버튼 스타일 -->
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#3C8F30"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3C8F30"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+
+        <!-- 텍스트 블록 스타일 -->
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Foreground" Value="#333333"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <Image x:Name="carType" Margin="40,194,40,194" Stretch="Uniform" Source="/assets/sedan.png"/>
-        <Image x:Name="engine" Margin="8,162,362,422" Stretch="Uniform" Source="/assets/gm.png"/>
-        <Image x:Name="breakSystem" Width="130" Height="100" Margin="185,162,185,422" Stretch="Uniform" Source="/assets/continental.png"/>
-        <Image x:Name="steerSystem" Width="130" Height="100" Margin="359,162,11,422" Stretch="Uniform" Source="/assets/mobis.png"/>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="31,156,0,0" TextWrapping="Wrap" Text="Engine" VerticalAlignment="Top" Width="84" BorderBrush="{x:Null}" FontWeight="Bold" TextAlignment="Center"/>
-        <TextBox HorizontalAlignment="Center" Height="20" Margin="0,156,0,0" TextWrapping="Wrap" Text="BreakSystem" VerticalAlignment="Top" Width="84" BorderBrush="{x:Null}" FontWeight="Bold" TextAlignment="Center"/>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="381,156,0,0" TextWrapping="Wrap" Text="SteerSystem" VerticalAlignment="Top" Width="86" BorderBrush="{x:Null}" FontWeight="Bold" TextAlignment="Center"/>
-        <Button x:Name="RunButton" Content="RUN" HorizontalAlignment="Left" Height="40" Margin="129,503,0,0" VerticalAlignment="Top" Width="110" Background="#FF182869" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button x:Name="TestButton" Content="TEST" HorizontalAlignment="Left" Height="40" Margin="264,503,0,0" VerticalAlignment="Top" Width="110" Background="#FF182869" Foreground="White" BorderBrush="{x:Null}" FontWeight="Bold">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
+        <Image x:Name="carType" Margin="40,209,40,179" Stretch="Uniform" Source="/assets/sedan.png"/>
+        <Image x:Name="engine" Margin="8,177,362,407" Stretch="Uniform" Source="/assets/gm.png"/>
+        <Image x:Name="breakSystem" Width="130" Height="100" Margin="185,177,185,407" Stretch="Uniform" Source="/assets/continental.png"/>
+        <Image x:Name="steerSystem" Width="130" Height="100" Margin="359,177,11,407" Stretch="Uniform" Source="/assets/mobis.png"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="31,171,0,0" TextWrapping="Wrap" Text="Engine" VerticalAlignment="Top" Width="84" BorderBrush="{x:Null}" FontWeight="Bold" TextAlignment="Center"/>
+        <TextBox HorizontalAlignment="Center" Height="20" Margin="0,171,0,0" TextWrapping="Wrap" Text="BreakSystem" VerticalAlignment="Top" Width="84" BorderBrush="{x:Null}" FontWeight="Bold" TextAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Height="20" Margin="381,171,0,0" TextWrapping="Wrap" Text="SteerSystem" VerticalAlignment="Top" Width="86" BorderBrush="{x:Null}" FontWeight="Bold" TextAlignment="Center"/>
+        <Button Name="GoFirstButton" Content="Go First" HorizontalAlignment="Center" Height="40" Margin="0,598,0,0" VerticalAlignment="Top" Width="130" FontWeight="Bold">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
         </Button>
     </Grid>
 </Window>

@@ -27,11 +27,11 @@ namespace SEMES_CAR_GUI {
         string[] breakSystems = { "", "/assets/mando.png", "/assets/continental.png", "/assets/bosch.png" };
         string[] steerSystems = { "", "/assets/bosch.png", "/assets/mobis.png" };
         
-        public ResultWindow(string options) {
+        public ResultWindow(string message, string options) {
             InitializeComponent();
             changeImg(options);
-            RunButton.Click += RunButton_Click;
-            TestButton.Click += TestButton_Click;
+            GoFirstButton.Click += GoFirstButton_Click;
+
         }
 
         private void changeImg(string options) {
@@ -40,59 +40,15 @@ namespace SEMES_CAR_GUI {
             engine.Source = new BitmapImage(new Uri(engines[optionList[1]], UriKind.Relative));
             breakSystem.Source = new BitmapImage(new Uri(breakSystems[optionList[2]], UriKind.Relative));
             steerSystem.Source = new BitmapImage(new Uri(steerSystems[optionList[3]], UriKind.Relative));
+
         }
 
-        private void RunButton_Click(object sender, RoutedEventArgs e)
+        private void GoFirstButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
 
-        private void TestButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-
-        //    private void StartSocketListener()
-        //    {
-        //        socketThread = new Thread(() =>
-        //        {
-        //            TcpListener listener = new TcpListener(IPAddress.Any, 12345); // 포트 12345에서 수신
-        //            listener.Start();
-        //            while (true)
-        //            {
-        //                using (TcpClient client = listener.AcceptTcpClient())
-        //                using (NetworkStream stream = client.GetStream())
-        //                {
-        //                    byte[] buffer = new byte[1024];
-        //                    int bytesRead = stream.Read(buffer, 0, buffer.Length);
-        //                    string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
-        //                    UpdateCarType(receivedData);
-        //                }
-        //            }
-        //        });
-        //        socketThread.IsBackground = true;
-        //        socketThread.Start();
-        //    }
-
-        //    private void UpdateCarType(string car)
-        //    {
-        //        Dispatcher.Invoke(() =>
-        //        {
-        //            int index = car switch
-        //            {
-        //                "sedan" => 1,
-        //                "suv" => 2,
-        //                "truck" => 3,
-        //                _ => 0
-        //            };
-
-        //            if (index > 0)
-        //            {
-        //                carType.Source = new BitmapImage(new Uri(images[index], UriKind.Relative));
-        //            }
-        //        });
-        //    }
-        //}
     }
 }
