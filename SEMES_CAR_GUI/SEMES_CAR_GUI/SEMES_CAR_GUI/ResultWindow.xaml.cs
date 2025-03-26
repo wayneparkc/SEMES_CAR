@@ -48,47 +48,5 @@ namespace SEMES_CAR_GUI {
             this.Close();
         }
 
-
-        //    private void StartSocketListener()
-        //    {
-        //        socketThread = new Thread(() =>
-        //        {
-        //            TcpListener listener = new TcpListener(IPAddress.Any, 12345); // 포트 12345에서 수신
-        //            listener.Start();
-        //            while (true)
-        //            {
-        //                using (TcpClient client = listener.AcceptTcpClient())
-        //                using (NetworkStream stream = client.GetStream())
-        //                {
-        //                    byte[] buffer = new byte[1024];
-        //                    int bytesRead = stream.Read(buffer, 0, buffer.Length);
-        //                    string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
-        //                    UpdateCarType(receivedData);
-        //                }
-        //            }
-        //        });
-        //        socketThread.IsBackground = true;
-        //        socketThread.Start();
-        //    }
-
-        //    private void UpdateCarType(string car)
-        //    {
-        //        Dispatcher.Invoke(() =>
-        //        {
-        //            int index = car switch
-        //            {
-        //                "sedan" => 1,
-        //                "suv" => 2,
-        //                "truck" => 3,
-        //                _ => 0
-        //            };
-
-        //            if (index > 0)
-        //            {
-        //                carType.Source = new BitmapImage(new Uri(images[index], UriKind.Relative));
-        //            }
-        //        });
-        //    }
-        //}
     }
 }
