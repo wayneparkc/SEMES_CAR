@@ -1,0 +1,11 @@
+﻿  Car.cpp
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+C:\Users\user\Desktop\dd\SEMES_CAR\SEMES_CAR_CLI\SEMES_CAR_CLI\Car.cpp(30,1): warning C4715: 'Car::getEngine': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\user\Desktop\dd\SEMES_CAR\SEMES_CAR_CLI\SEMES_CAR_CLI\Car.cpp(36,1): warning C4715: 'Car::getBreak': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\user\Desktop\dd\SEMES_CAR\SEMES_CAR_CLI\SEMES_CAR_CLI\Car.cpp(41,1): warning C4715: 'Car::getSteering': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  SEMES_CAR_CLI.vcxproj -> C:\Users\user\Desktop\dd\SEMES_CAR\SEMES_CAR_CLI\x64\Debug\SEMES_CAR_CLI.exe
+  'pwsh.exe'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+  배치 파일이 아닙니다.

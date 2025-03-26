@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SEMES_CAR_GUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf1d89383ed16a964a72c056ca1423abe8c8ad98")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9ef8403a29f6e543f4408838c838920374b8411")]
 [assembly: System.Reflection.AssemblyProductAttribute("SEMES_CAR_GUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SEMES_CAR_GUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

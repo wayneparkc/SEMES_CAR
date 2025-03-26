@@ -7,13 +7,9 @@
 using namespace boost::asio;
 using ip::tcp;
 
-
-
 bool isValidCombination(int carChoice, int engineChoice, int brakeChoice, int steeringChoice) {
     return true;
 }
-
-
 
 void handleClient(tcp::socket socket) {
     try {
