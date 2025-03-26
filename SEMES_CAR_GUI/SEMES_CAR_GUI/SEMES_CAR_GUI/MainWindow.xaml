@@ -3,46 +3,72 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="자동차 제조 테스트" Height="700" Width="500">
     <Window.Resources>
-        <!-- 스타일 추가 -->
+        <!-- 라디오 버튼 스타일 -->
         <Style TargetType="RadioButton">
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontSize" Value="14"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <!-- 텍스트 스타일 -->
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <!-- 버튼 스타일 -->
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background" Value="#007AFF"/>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
     </Window.Resources>
 
-    <Grid>
-        <Button Name="ResetButton" Content="전체 초기화" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" FontSize="14" Click="ResetButton_Click"/>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Text="자동차 제조 옵션을 선택하세요." FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,20"/>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
             <!-- 차량 타입 선택 -->
-            <TextBlock Text="Choose Car Type:" FontSize="16" FontWeight="Bold" Margin="10"/>
-            <RadioButton Name="SedanRadioButton" Content="Sedan" GroupName="CarType" />
-            <RadioButton Name="SUVRadioButton" Content="SUV" GroupName="CarType" />
-            <RadioButton Name="TruckRadioButton" Content="Truck" GroupName="CarType" />
+            <TextBlock Text="차량 타입 선택"/>
+            <RadioButton Name="SedanRadioButton" Content="Sedan" GroupName="CarType"/>
+            <RadioButton Name="SUVRadioButton" Content="SUV" GroupName="CarType"/>
+            <RadioButton Name="TruckRadioButton" Content="Truck" GroupName="CarType"/>
 
             <!-- 엔진 타입 선택 -->
-            <TextBlock Text="Choose Engine:" FontSize="16" FontWeight="Bold" Margin="10"/>
-            <RadioButton Name="GMRadioButton" Content="GM" GroupName="Engine" />
-            <RadioButton Name="ToyotaRadioButton" Content="Toyota" GroupName="Engine" />
-            <RadioButton Name="WiaRadioButton" Content="WIA" GroupName="Engine" />
+            <TextBlock Text="엔진 타입 선택"/>
+            <RadioButton Name="GMRadioButton" Content="GM" GroupName="Engine"/>
+            <RadioButton Name="ToyotaRadioButton" Content="Toyota" GroupName="Engine"/>
+            <RadioButton Name="WiaRadioButton" Content="WIA" GroupName="Engine"/>
 
             <!-- 브레이크 타입 선택 -->
-            <TextBlock Text="Choose Brake:" FontSize="16" FontWeight="Bold" Margin="10"/>
-            <RadioButton Name="MandoRadioButton" Content="MANDO" GroupName="Brake" />
-            <RadioButton Name="ContinentalRadioButton" Content="Continental" GroupName="Brake" />
-            <RadioButton Name="BoschRadioButton" Content="Bosch" GroupName="Brake" />
+            <TextBlock Text="브레이크 타입 선택"/>
+            <RadioButton Name="MandoRadioButton" Content="MANDO" GroupName="Brake"/>
+            <RadioButton Name="ContinentalRadioButton" Content="Continental" GroupName="Brake"/>
+            <RadioButton Name="BoschRadioButton" Content="Bosch" GroupName="Brake"/>
 
             <!-- 스티어링 타입 선택 -->
-            <TextBlock Text="Choose Steering:" FontSize="16" FontWeight="Bold" Margin="10"/>
-            <RadioButton Name="BoschSteeringRadioButton" Content="Bosch" GroupName="Steering" />
-            <RadioButton Name="MobisSteeringRadioButton" Content="Mobis" GroupName="Steering" />
-
-            <!-- 버튼 영역 -->
-            <Button Name="SubmitButton" Width="100" Height="30" Content="Submit" Margin="10" FontSize="16"/>
-
-            <!-- 결과 표시 -->
-            <TextBlock Name="ResultTextBlock" Margin="10" FontWeight="Bold" Foreground="Red"/>
+            <TextBlock Text="스티어링 타입 선택"/>
+            <RadioButton Name="BoschSteeringRadioButton" Content="Bosch" GroupName="Steering"/>
+            <RadioButton Name="MobisSteeringRadioButton" Content="Mobis" GroupName="Steering"/>
         </StackPanel>
+
+        <!-- 버튼 영역 -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="SubmitButton" Content="제조 요청"/>
+            <Button Name="ResetButton" Content="초기화" Click="ResetButton_Click"/>
+        </StackPanel>
+
+        <!-- 결과 표시 -->
+        <TextBlock Name="ResultTextBlock" Grid.Row="3" HorizontalAlignment="Center" Foreground="Red" Margin="0"/>
     </Grid>
 </Window>
